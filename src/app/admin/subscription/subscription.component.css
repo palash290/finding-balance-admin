@@ -1,0 +1,35 @@
+.ct_subscription_tab ul#pills-tab {
+    margin-bottom: 0px;
+    border: 1px solid hwb(0deg 100% 0% / 42%);
+    padding: 6px;
+    border-radius: 10px;
+}
+.ct_subscription_tab li.nav-item button {
+    height: 33px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+    width: 100px;
+    text-align: center;
+    border-radius: 8px;
+    justify-content: center;
+}
+.ct_subscription_tab li.nav-item button.active{
+    background-color: var(--orange);
+}
+.ct_subcription_table.table>:not(caption)>*>* {
+    background-color: transparent;
+    border: 0px;
+    vertical-align: middle;
+}
+
+.ct_subcription_table th{
+    color: var(--orange);
+    font-weight: 500;
+}
+
+.ct_subcription_table td{
+    color: #fff;
+    font-weight: 500;
+}

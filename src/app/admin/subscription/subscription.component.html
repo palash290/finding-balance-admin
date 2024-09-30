@@ -1,0 +1,100 @@
+<div class="ct_upload_text">
+    <!-- <img [src]="avatar_url_fb ? avatar_url_fb : 'assets/img/np_pro.png'" alt="" class="ct_img_44 ct_orange_border_1"> -->
+
+    <div class="form-group w-100">
+        <input type="text" class="form-control ct_custom_input w-100" placeholder="Search...">
+    </div>
+</div>
+
+<div class="d-flex align-items-center justify-content-between mt-3">
+    <div class="ct_subscription_tab">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">User</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Coach</button>
+            </li>
+
+        </ul>
+    </div>
+    <!-- <div>
+        <a routerLink="/admin/main/update-plan" class="ct_orange_btn">
+            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
+                <path
+                    d="M14.1163 8.83212C13.9888 8.47368 13.7537 8.16338 13.4431 7.9437C13.1325 7.72403 12.7616 7.60571 12.3812 7.60493H10.9569C10.5505 7.60281 10.1578 7.75143 9.85467 8.02207C9.55155 8.29271 9.35954 8.66613 9.31579 9.07013C9.27203 9.47413 9.37964 9.88001 9.61779 10.2093C9.85594 10.5385 10.2077 10.7678 10.6051 10.8527L12.774 11.3259C13.2175 11.423 13.6094 11.6806 13.8745 12.0491C14.1397 12.4176 14.2593 12.8711 14.2104 13.3224C14.1615 13.7738 13.9475 14.1911 13.6096 14.4943C13.2717 14.7974 12.8336 14.965 12.3796 14.9649H11.154C10.3527 14.9649 9.67132 14.4538 9.41894 13.7393M11.7676 7.60493V5.76416M11.7676 16.8057V14.9665M3.15234 20.8877V16.9443H7.09573"
+                    stroke="white" stroke-width="1.84025" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="M21.7703 9.3567C22.189 11.589 21.8547 13.8971 20.8198 15.9189C19.7848 17.9406 18.1079 19.5615 16.0522 20.5271C13.9964 21.4927 11.6782 21.7484 9.46146 21.254C7.24469 20.7596 5.25483 19.5431 3.80418 17.7956M1.91015 13.7081C1.49141 11.4758 1.82573 9.16764 2.86065 7.1459C3.89557 5.12417 5.57251 3.50329 7.62825 2.53769C9.684 1.57208 12.0022 1.31641 14.219 1.81079C16.4357 2.30518 18.4256 3.52163 19.8762 5.26923"
+                    stroke="white" stroke-width="1.84025" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M19.877 1.57178V5.51517H15.9336" stroke="white" stroke-width="1.84025" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+
+            Update Plan Price</a>
+    </div> -->
+</div>
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="table-responsive">
+
+            <table class="table ct_subcription_table">
+                <thead>
+                    <tr>
+                        <th style="width: 44px;"></th>
+                        <th>User full name</th>
+                        <th>Price (USD)</th>
+                        <th>Started from </th>
+                        <th>Expire on</th>
+                        <th class="text-end">Status</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let user of paidUsers">
+                    <tr>
+                        <td><img src="assets/img/user_img_1.png" alt="" class="ct_img_44"></td>
+                        <td>{{user.user.full_name}}</td>
+                        <td>{{user.plan.price}}</td>
+                        <td>{{user.created_at | date:'dd-MMM-yyyy'}}</td>
+                        <td>{{user.expired_at | date:'dd-MMM-yyyy'}}</td>
+                        <td class="text-end" *ngIf="user.status=='Active'"><span class="ct_green_text">Working</span></td>
+                        <td class="text-end" *ngIf="user.status!='Active'"><span class="ct_red_text">Expired</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="table-responsive">
+
+            <table class="table ct_subcription_table">
+                <thead>
+                    <tr>
+                        <th style="width: 44px;"></th>
+                        <th>User full name</th>
+                        <th>Price (USD)</th>
+                        <th>Started from </th>
+                        <th>Expire on</th>
+                        <th class="text-end">Status</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let coach of paidCoaches">
+                    <tr>
+                        <td><img src="assets/img/user_img_1.png" alt="" class="ct_img_44"></td>
+                        <td>{{coach.coach.full_name}}</td>
+                        <td>{{coach.plan.price}}</td>
+                        <td>{{coach.created_at | date:'dd-MMM-yyyy'}}</td>
+                        <td>{{coach.expired_at | date:'dd-MMM-yyyy'}}</td>
+                        <td class="text-end" *ngIf="coach.status=='Active'"><span class="ct_green_text">Working</span></td>
+                        <td class="text-end" *ngIf="coach.status!='Active'"><span class="ct_red_text">Expired</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

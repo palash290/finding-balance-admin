@@ -1,0 +1,15 @@
+.ct_light_grey_text1{
+    color: #A0A0A0;
+
+}
+
+.ct_statics_card {
+    padding: 10px;
+    border-radius: 10px;
+    height: 100%;
+}
+.ct_statics_black_bg {
+    background-color: #101011;
+    padding: 28px;
+    border-radius: 10px;
+}

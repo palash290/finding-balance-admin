@@ -1,0 +1,63 @@
+<div class="d-flex align-items-center gap-2 justify-content-between mb-4 flex-wrap">
+    <h4 class="ct_fs_28 ct_ff_roboto ct_fw_500 ct_orange_text">Update Plan Price</h4>
+    <button class="ct_orange_btn ct_grey_btn ct_border_radius_10" (click)="UpdatePrice()">Update</button>
+</div>
+
+<form [formGroup]="newForm">
+
+    <div class="form-group mb-3">
+        <label for="" class="mb-2 ct_ff_roboto ct_fw_600 text-white">User's Plan Price/month(USD)</label>
+        <input type="number" class="ct_login_input form-control ct_border_radius_10" formControlName="userPlan"
+            placeholder="Enter Event Title">
+        <!-- Error message if price is required -->
+        <div *ngIf="newForm.controls['userPlan'].errors?.['required'] && newForm.controls['userPlan'].touched"
+            class="error-message">
+            Price is required.
+        </div>
+
+        <!-- Error message if price is negative -->
+        <div *ngIf="newForm.controls['userPlan'].errors?.['min'] && newForm.controls['userPlan'].touched"
+            class="error-message">
+            Price must be greater than or equal to 0.
+        </div>
+
+        <!-- Error message if price exceeds max value (5 digits) -->
+        <div *ngIf="newForm.controls['userPlan'].errors?.['max'] && newForm.controls['userPlan'].touched"
+            class="error-message">
+            Price cannot exceed 5 digits.
+        </div>
+    </div>
+
+
+    <!-- Price Field (Shown only if IsPaid is "yes") -->
+    <div class="form-group mb-3">
+        <label for="price" class="mb-2 text-white">Coach's Plan Price/month(USD)</label>
+        <input type="number" class="ct_login_input form-control ct_border_radius_10" formControlName="coachPlan"
+            placeholder="Enter Price" min="1">
+
+        <!-- Error message if price is required -->
+        <div *ngIf="newForm.controls['coachPlan'].errors?.['required'] && newForm.controls['coachPlan'].touched"
+            class="error-message">
+            Price is required.
+        </div>
+
+        <!-- Error message if price is negative -->
+        <div *ngIf="newForm.controls['coachPlan'].errors?.['min'] && newForm.controls['coachPlan'].touched"
+            class="error-message">
+            Price must be greater than or equal to 0.
+        </div>
+
+        <!-- Error message if price exceeds max value (5 digits) -->
+        <div *ngIf="newForm.controls['coachPlan'].errors?.['max'] && newForm.controls['coachPlan'].touched"
+            class="error-message">
+            Price cannot exceed 5 digits.
+        </div>
+
+    </div>
+
+</form>
+
+
+<div *ngIf="loading" class="ct_loader_main">
+    <div class="loader"></div>
+</div>

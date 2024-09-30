@@ -1,0 +1,141 @@
+<div class="ct_box_2_column ct_box_2_full_active">
+
+    <div>
+        <div class="ct_upload_text">
+            <!-- <img [src]="avatar_url_fb ? avatar_url_fb : 'assets/img/np_pro.png'" alt="" class="ct_img_44 ct_orange_border_1"> -->
+
+            <div class="form-group w-100">
+                <input type="text" class="form-control ct_custom_input w-100" placeholder="Search..."
+                    [(ngModel)]="searchQuery">
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mt-3">
+            <h4 class="mb-0 ct_fw_600 ct_fs_20 text-white ct_ff_roboto">All Category</h4>
+            <a class="ct_orange_text" style="cursor: pointer;" data-bs-toggle="modal"
+                data-bs-target="#ct_add_community">+ Add New Category</a>
+        </div>
+
+        <div *ngIf="data?.length === 0" class="text-center">
+            <p class="ct_fs_15 text-white mt-5">No categories found</p>
+        </div>
+
+        <div class="mt-4" *ngIf="data?.length > 0">
+            <ul class="ct_mt_30 ct_all_notification ct_my_interent_scroll px-2">
+                <li *ngFor="let categories of data ">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="ct_grid_auto_auto gap-2">
+                            <div class="d-flex gap-2 align-items-center" style="cursor: pointer;">
+                                <div class="ct_star_circle">
+                                    <img src="../assets/img/star.png" alt="">
+                                </div>
+
+                                <!-- <div>
+                                    <h5 class="ct_fs_15 ct_orange_text ct_fw_600 mb-1 ct_ff_roboto">
+                                        {{categories.full_name}}</h5>
+                                </div> -->
+                                <div>
+                                    <h5 class="ct_fs_15 ct_orange_text ct_fw_600 mb-1 ct_ff_roboto">
+                                        {{categories.name}}</h5>
+
+                                    <!-- <p class="mb-0 ct_ff_roboto ct_fs_12 text-white text-center mt-2 ct_fw_400">
+                                            {{categories.numberOfFollower}} {{categories.numberOfFollower > 1 ? 'Followers' :
+                                            'Follower'}}
+                                        </p> -->
+                                </div>
+                            </div>
+
+                        </div>
+                        <div>
+                            <button class="ct_orange_btn ct_grey_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
+                                style="min-width: 5rem;" data-bs-toggle="modal" data-bs-target="#ct_edit_community"
+                                (click)="getId(categories.id, categories.name)">
+
+                                <div class="d-flex align-items-center">
+                                    <span>Edit</span>
+                                </div>
+
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Add Cat -->
+<div class="modal fade" id="ct_add_community" tabindex="-1" aria-labelledby="ct_add_community" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pt-0 px-0 d-block text-center">
+                <h5 class="modal-title text-white ct_fs_15 mx-auto ct_ff_roboto" id="exampleModalLabel">Create New
+                    Category</h5>
+                <button type="button" class="btn-close ct_close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fa-solid fa-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div>
+                        <input type="text" class="form-control ct_login_input" placeholder="Enter Name"
+                            [(ngModel)]="name" [ngModelOptions]="{ standalone: true }" required />
+                        <div *ngIf="nameError" class="error-message">Category name is required.</div>
+                    </div>
+
+                    <button hidden type="button" class="btn btn-secondary" #closeModal
+                        data-bs-dismiss="modal">Close</button>
+                    <button (click)="addName()" class="ct_orange_btn ct_grey_btn ct_border_radius_10 w-100 mt-4"
+                        [disabled]="btnLoaderCreate">
+                        <div class="d-flex align-items-center">
+                            <div class="spinner-border me-2" role="status" *ngIf="btnLoaderCreate">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <span *ngIf="!btnLoaderCreate">Add</span>
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Edit Cat -->
+<div class="modal fade" id="ct_edit_community" tabindex="-1" aria-labelledby="ct_add_community" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pt-0 px-0 d-block text-center">
+                <h5 class="modal-title text-white ct_fs_15 mx-auto ct_ff_roboto" id="exampleModalLabel">Update
+                    Catagory Name</h5>
+                <button type="button" class="btn-close ct_close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fa-solid fa-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div>
+                        <input type="text" class="form-control ct_login_input" placeholder="Enter Name"
+                            [(ngModel)]="updateName" [ngModelOptions]="{ standalone: true }" required />
+                        <div *ngIf="nameError1" class="error-message">Category name is required.</div>
+                    </div>
+
+                    <button hidden type="button" class="btn btn-secondary" #closeModal1
+                        data-bs-dismiss="modal">Close</button>
+                    <button (click)="editName()" class="ct_orange_btn ct_grey_btn ct_border_radius_10 w-100 mt-4"
+                        [disabled]="btnLoaderCreate">
+                        <div class="d-flex align-items-center">
+                            <div class="spinner-border me-2" role="status" *ngIf="btnLoaderCreate">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <span *ngIf="!btnLoaderCreate">Update</span>
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

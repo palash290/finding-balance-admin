@@ -1,0 +1,64 @@
+<div class="ct_box_2_column ct_box_2_full_active">
+    <div>
+        <div class="ct_upload_text">
+            <!-- <img [src]="avatar_url_fb ? avatar_url_fb : 'assets/img/np_pro.png'" alt="" class="ct_img_44 ct_orange_border_1"> -->
+
+            <div class="form-group w-100">
+                <input type="text" class="form-control ct_custom_input w-100" placeholder="Search..."
+                    [(ngModel)]="searchQuery" (ngModelChange)="searchCategories()">
+            </div>
+        </div>
+
+        <!-- <p class="mb-0 text-white" style="white-space: nowrap;">Filter post by :</p> -->
+
+        <div class="d-flex align-items-center gap-3 ct_flex_575 mt-3">
+            <div class="ct_filter_search_input_140">
+                <span class="text-white ct_text_op_5 ">Category:</span>
+                <select class="" [(ngModel)]="categoryId" (change)="onCategoryChange($event)" style="cursor: pointer;">
+                    <option value="">All</option>
+                    <option *ngFor="let category of categories" [value]="category.id">{{ category.name
+                        }}</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div *ngIf="data?.length === 0" class="text-center">
+            <p class="ct_fs_15 text-white mt-5">No categories found</p>
+        </div>
+
+        <div class="mt-4" *ngIf="data?.length > 0">
+            <ul class="ct_mt_30 ct_all_notification ct_my_interent_scroll px-2">
+                <li *ngFor="let categories of data;">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="ct_grid_auto_auto gap-2">
+                            <div class="d-flex gap-2 align-items-center"
+                                (click)="getCoachId(categories.id, categories.role)" style="cursor: pointer;">
+                                <div class="ct_star_circle">
+                                    <img [src]="categories.avatar_url ? categories.avatar_url : '/assets/img/np_pro.png'"
+                                        alt="" class="ct_img_40 ct_bor ct_white_border_1">
+                                </div>
+
+                                <!-- <div>
+                                    <h5 class="ct_fs_15 ct_orange_text ct_fw_600 mb-1 ct_ff_roboto">
+                                        {{categories.full_name}}</h5>
+                                </div> -->
+                                <div>
+                                    <h5 class="ct_fs_15 ct_orange_text ct_fw_600 mb-1 ct_ff_roboto">
+                                        {{categories.full_name}}</h5>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div *ngIf="categories.numberOfFollower > 0">
+                            <p class="mb-0 ct_ff_roboto ct_fs_12 text-white text-center mt-2 ct_fw_400">
+                                {{categories.numberOfFollower}} {{categories.numberOfFollower > 1 ? 'Followers' :
+                                'Follower'}}
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
