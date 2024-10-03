@@ -94,7 +94,11 @@ export class CategoriesComponent {
       },
       error: (error) => {
         this.btnLoaderCreate = false;
-        this.toastr.error(error.error.message);
+        if (error.error.message) {
+          this.toastr.error(error.error.message);
+        } else {
+          this.toastr.error('Something went wrong!');
+        }
         console.log(error.statusText);
       }
     });
@@ -138,7 +142,11 @@ export class CategoriesComponent {
       },
       error: (error) => {
         this.btnLoaderCreate = false;
-        this.toastr.error(error.error.message);
+        if (error.error.message) {
+          this.toastr.error(error.error.message);
+        } else {
+          this.toastr.error('Something went wrong!');
+        }
         console.log(error.statusText);
       }
     });

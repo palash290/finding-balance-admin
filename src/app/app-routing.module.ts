@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/home'
+    redirectTo: '/login'
   },
   {
     path: "login",
@@ -19,15 +19,15 @@ const routes: Routes = [
     component: ForgotPassordComponent
   },
 
-  {
-    path: "home",
-    component: HomeComponent
-  },
+  // {
+  //   path: "home",
+  //   component: HomeComponent
+  // },
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
-  { path: '**', redirectTo: '/home' }
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({
