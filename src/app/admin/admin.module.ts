@@ -16,9 +16,10 @@ import { CategoriesComponent } from './categories/categories.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { EventsComponent } from './events/events.component';
 import { UpdatePlanComponent } from './update-plan/update-plan.component';
-import { FilterPipe } from '../services/filter.pipe';
+import { ChatFilterPipe, ChatFilterPipe2, FilterPipe } from '../services/filter.pipe';
 import { SingleEventComponent } from './single-event/single-event.component';
 import { PlanComponent } from './plan/plan.component';
+import { AngularWavesurferServiceModule } from 'angular-wavesurfer-service';
 
 
 @NgModule({
@@ -34,8 +35,9 @@ import { PlanComponent } from './plan/plan.component';
     CategoriesComponent,
     SubscriptionComponent,
     EventsComponent,
-    //FilterPipe,
-    //ChatFilterPipe,
+    FilterPipe,
+    ChatFilterPipe,
+    ChatFilterPipe2,
     UpdatePlanComponent,
    SingleEventComponent,
    PlanComponent
@@ -46,6 +48,7 @@ import { PlanComponent } from './plan/plan.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularWavesurferServiceModule
     //FilterPipe
   ]
 })

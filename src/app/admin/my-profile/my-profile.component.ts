@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { WaveService } from 'angular-wavesurfer-service';
+import WaveSurfer from 'wavesurfer.js';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class MyProfileComponent {
 
   role: any;
 
-  constructor(private route: ActivatedRoute, private service: SharedService, private location: Location) { }
+  constructor(private route: ActivatedRoute, private service: SharedService, private location: Location,  public waveService: WaveService) { }
 
   backClicked() {
     this.location.back();
@@ -53,6 +55,17 @@ export class MyProfileComponent {
     this.loginuserId = localStorage.getItem('fbId');
   }
 
+
+
+  wave: WaveSurfer[] = [];
+  currentTimeA: number[] = [];
+  totalDurationA: number[] = [];
+
+  tracks: number[] = Array(50).fill(0); // Array of track heights
+  trackHeights: number[] = Array(50).fill(20); // Initial heights of tracks
+  highlightedBars: number = 0; // Number of highlighted bars
+  isPlayingA: boolean[] = [];
+
   //if coach see coach profile
   isCoachPosts: boolean = false;
   getCoachProfile(userId: any) {
@@ -75,6 +88,46 @@ export class MyProfileComponent {
         this.selectedCategoryNames = resp.data.CoachCategory?.map((item: { category: { name: any; }; }) => item.category.name);
 
         this.postData = resp.data?.Post?.map((item: any) => ({ ...item, isExpanded: false, isPlaying: false }));
+
+        setTimeout(() => {
+          this.postData?.forEach((item: any, index: any) => {
+            const waveformId = '#waveform' + item.id;
+            const waveInstance: any = this.waveService.create({
+              container: waveformId,
+              waveColor: '#fff',
+              progressColor: '#e58934',
+              // cursorColor: '#ff5722',
+              responsive: true,
+              height: 50,
+              barWidth: 3,
+              barGap: 6
+            });
+            this.wave.push(waveInstance); // Store the instance for later use
+
+            waveInstance.load(item?.mediaUrl);
+
+            waveInstance.on('ready', () => {
+              const index = this.postData.findIndex((audio: { id: any; }) => audio.id === item.id);
+              this.totalDurationA[index] = waveInstance.getDuration();
+            });
+
+            waveInstance.on('audioprocess', () => {
+              const index = this.postData.findIndex((audio: { id: any; }) => audio.id === item.id);
+              this.currentTimeA[index] = waveInstance.getCurrentTime();
+            });
+
+            waveInstance.on('play', () => {
+              this.isPlayingA[index] = true;  // Update to playing state
+              this.stopOtherAudios(index);   // Stop all other audios when one plays
+            });
+
+            waveInstance.on('pause', () => {
+              this.isPlayingA[index] = false; // Update to paused state
+            });
+
+          });
+        }, 200);
+        
         // if(resp.data?.Post?.length > 0){
         //   this.isCoachPosts = true;
         // }
@@ -83,6 +136,19 @@ export class MyProfileComponent {
         console.log(error.message);
       }
     });
+  }
+
+  stopOtherAudios(currentIndex: number) {
+    this.wave.forEach((waveInstance, index) => {
+      if (index !== currentIndex) {
+        waveInstance.pause();
+        this.isPlayingA[index] = false; // Reset play state for other audios
+      }
+    });
+  }
+
+  togglePlayPause(index: number): void {
+    this.wave[index].playPause();
   }
 
   url: any;
@@ -261,10 +327,21 @@ export class MyProfileComponent {
     videoElement.currentTime = time;
   }
 
+  // formatTime(time: number): string {
+  //   const minutes = Math.floor(time / 60);
+  //   const seconds = Math.floor(time % 60);
+  //   return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  // }
+
   formatTime(time: number): string {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    if (time) {
+      const minutes = Math.floor(time / 60);
+      const seconds = Math.floor(time % 60);
+      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    } else {
+      return `00:00`;
+    }
+
   }
 
 

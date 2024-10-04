@@ -64,7 +64,7 @@ export class SettingComponent {
         } else {
           this.toastr.error('Something went wrong!');
         }
-        console.log(error.statusText);
+        //console.log(error.statusText);
       }
     });
   }

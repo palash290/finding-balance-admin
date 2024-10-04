@@ -40,3 +40,10 @@ div#ct_add_coach .modal-content {
     border: 1px solid var(--orange);
     padding: 22px;
 }
+
+div#ct_followed_user .modal-content,
+div#ct_followed_coaches .modal-content {
+    background-color: #111010;
+    border: 1px solid var(--orange);
+    padding: 22px;
+}

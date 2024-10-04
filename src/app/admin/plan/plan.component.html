@@ -18,8 +18,16 @@
                         <td>{{user.price}}</td>
                         <td>{{user.type}}</td>
                         <td>
-                            <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13">See
+
+                            @if(user.type == 'USER'){
+                            <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
+                                data-bs-toggle="modal" data-bs-target="#ct_followed_coaches">See
                                 Details</button>
+                            } @else{
+                            <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
+                                data-bs-toggle="modal" data-bs-target="#ct_followed_user">See
+                                Details</button>
+                            }
                         </td>
                         <td>
                             @if(user.type == 'USER'){
@@ -119,6 +127,90 @@
                         </div>
                     </button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Follow Friend Modal S -->
+
+<div class="modal fade" id="ct_followed_coaches" tabindex="-1" aria-labelledby="ct_followed_coachesLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pt-0 px-0 d-block text-center">
+                <h5 class="modal-title text-white ct_fs_18 mx-auto ct_ff_roboto" id="exampleModalLabel">Benefits of
+                    Premium Plan
+                </h5>
+                <button type="button" class="btn-close ct_close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fa-solid fa-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="ct_add_member_scroll text-white">
+
+                    <ul>
+
+                        <li>
+                            <ul>
+                                <li><i class="fa-solid fa-check me-1 text-white"></i>Can set up communities</li>
+                                <li><i class="fa-solid fa-check me-1 text-white mt-1"></i>Can set up teams</li>
+                                <li><i class="fa-solid fa-check me-1 text-white mt-1"></i>Can share long-form media
+                                    (More than 2 minutes)</li>
+                                <li><i class="fa-solid fa-check me-1 text-white mt-1"></i>Can set up free or paid
+                                    webinars/events</li>
+                                <li><i class="fa-solid fa-check me-1 text-white mt-1"></i>Can set up Ad hoc charges for
+                                    additional events/services</li>
+                                <li><i class="fa-solid fa-check me-1 text-white mt-1"></i>Can set up Ad hoc charges for
+                                    additional posts</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ct_followed_user" tabindex="-1" aria-labelledby="ct_followed_coachesLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pt-0 px-0 d-block text-center">
+                <h5 class="modal-title text-white ct_fs_18 mx-auto ct_ff_roboto" id="exampleModalLabel">Benefits of
+                    Premium Plan
+                </h5>
+                <button type="button" class="btn-close ct_close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fa-solid fa-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="ct_add_member_scroll text-white">
+
+                    <ul>
+                        <li>
+                            <ul>
+                                <li><i class="fa-solid fa-check me-1 text-white"></i>Have access to all content, both
+                                    “free” and “paid”</li>
+                                <li class="mt-2"><i class="fa-solid fa-check me-1 text-white"></i>Can be invited and
+                                    charged for additional “paid” events or content</li>
+                                <li class="mt-2"><i class="fa-solid fa-check me-1 text-white"></i>Repeatable/recurring
+                                    membership charges and ad hoc charging for events and webinars
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
             </div>
         </div>
     </div>

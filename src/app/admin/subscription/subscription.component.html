@@ -2,7 +2,7 @@
     <!-- <img [src]="avatar_url_fb ? avatar_url_fb : 'assets/img/np_pro.png'" alt="" class="ct_img_44 ct_orange_border_1"> -->
 
     <div class="form-group w-100">
-        <input type="text" class="form-control ct_custom_input w-100" placeholder="Search...">
+        <input type="text" class="form-control ct_custom_input w-100" placeholder="Search..." [(ngModel)]="searchQuery">
     </div>
 </div>
 
@@ -13,7 +13,7 @@
                 <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
                     type="button" role="tab" aria-controls="pills-home" aria-selected="true">User</button>
             </li>
-            <li class="nav-item" role="presentation">
+            <li class="nav-item" role="presentation" (click)="getCoaches()">
                 <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
                     type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Coach</button>
             </li>
@@ -51,14 +51,18 @@
                         <th class="text-end">Status</th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let user of paidUsers">
+                <div *ngIf="(!paidUsers || (paidUsers | chatFilter:searchQuery)?.length == 0)" class="text-center mt-4">
+                    <p class="ct_fs_15 text-white">No users found</p>
+                </div>
+                <tbody *ngFor="let user of paidUsers | chatFilter:searchQuery">
                     <tr>
                         <td><img src="assets/img/user_img_1.png" alt="" class="ct_img_44"></td>
                         <td>{{user.user.full_name}}</td>
                         <td>{{user.plan.price}}</td>
                         <td>{{user.created_at | date:'dd-MMM-yyyy'}}</td>
                         <td>{{user.expired_at | date:'dd-MMM-yyyy'}}</td>
-                        <td class="text-end" *ngIf="user.status=='Active'"><span class="ct_green_text">Working</span></td>
+                        <td class="text-end" *ngIf="user.status=='Active'"><span class="ct_green_text">Working</span>
+                        </td>
                         <td class="text-end" *ngIf="user.status!='Active'"><span class="ct_red_text">Expired</span></td>
                     </tr>
 
@@ -81,15 +85,21 @@
                         <th class="text-end">Status</th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let coach of paidCoaches">
+                <div *ngIf="(!paidCoaches || (paidCoaches | chatFilter2:searchQuery)?.length === 0)"
+                    class="text-center mt-4">
+                    <p class="ct_fs_15 text-white">No coaches found</p>
+                </div>
+                <tbody *ngFor="let coach of paidCoaches | chatFilter2:searchQuery">
                     <tr>
                         <td><img src="assets/img/user_img_1.png" alt="" class="ct_img_44"></td>
                         <td>{{coach.coach.full_name}}</td>
                         <td>{{coach.plan.price}}</td>
                         <td>{{coach.created_at | date:'dd-MMM-yyyy'}}</td>
                         <td>{{coach.expired_at | date:'dd-MMM-yyyy'}}</td>
-                        <td class="text-end" *ngIf="coach.status=='Active'"><span class="ct_green_text">Working</span></td>
-                        <td class="text-end" *ngIf="coach.status!='Active'"><span class="ct_red_text">Expired</span></td>
+                        <td class="text-end" *ngIf="coach.status=='Active'"><span class="ct_green_text">Working</span>
+                        </td>
+                        <td class="text-end" *ngIf="coach.status!='Active'"><span class="ct_red_text">Expired</span>
+                        </td>
                     </tr>
 
                 </tbody>

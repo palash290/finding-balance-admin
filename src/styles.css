@@ -77,3 +77,25 @@ div:where(.swal2-icon).swal2-warning{
 .swal2-confirm:focus{
   box-shadow: unset !important;
 }
+
+.waveform div ~ div {
+  display: none;
+}
+
+.ct_show_uploaded_audio_box_bg{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-block: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.ct_show_uploaded_audio_box_bg:before{
+content: "";
+position: absolute;
+inset: 0px;
+background-color: #000;
+opacity: 0.5;
+z-index: -1;
+}

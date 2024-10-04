@@ -23,25 +23,55 @@ export class FilterPipe implements PipeTransform {
 
 
 
-// @Pipe({
-//   name: 'chatFilter'
-// })
-// export class ChatFilterPipe implements PipeTransform {
+@Pipe({
+  name: 'chatFilter'
+})
+export class ChatFilterPipe implements PipeTransform {
 
-//   transform(value: any[], searchTerm: string): any[] {
-//     if (!value || !searchTerm) {
-//       return value;
-//     }
+  transform(value: any[], searchTerm: string): any[] {
+    if (!value || !searchTerm) {
+      return value;
+    }
 
-//     searchTerm = searchTerm.toLowerCase();
+    searchTerm = searchTerm.toLowerCase();
 
-//     return value.filter(item => {
-//       const coachName = item.participants[0]?.Coach?.full_name?.toLowerCase() || '';
-//       const userName = item.participants[0]?.User?.full_name?.toLowerCase() || '';
-//       const coachName1 = item.participants[0]?.Coach?.full_name || '';
-//       const userName1 = item.participants[0]?.User?.full_name || '';
+    return value.filter(item => {
+      debugger
+      const userName = item.user?.full_name?.toLowerCase() || '';
+      const userName1 = item.user?.full_name || '';
 
-//       return coachName.includes(searchTerm) || userName.includes(searchTerm) || coachName1.includes(searchTerm) || userName1.includes(searchTerm);
-//     });
-//   }
-// }//item.participant?.Coach?.full_name
+      // const coachName = item.coachSubscriptions[0]?.coach?.full_name?.toLowerCase() || '';
+      // const coachName1 = item.coachSubscriptions[0]?.coach?.full_name || '';
+
+      return userName.includes(searchTerm) || userName1.includes(searchTerm) 
+      //|| coachName.includes(searchTerm) || coachName1.includes(searchTerm);
+    });
+  }
+}//item.participant?.Coach?.full_name
+
+@Pipe({
+  name: 'chatFilter2'
+})
+export class ChatFilterPipe2 implements PipeTransform {
+
+  transform(value: any[], searchTerm: string): any[] {
+    if (!value || !searchTerm) {
+      return value;
+    }
+
+    searchTerm = searchTerm.toLowerCase();
+
+    return value.filter(item => {
+      // debugger
+      // const userName = item.user?.full_name?.toLowerCase() || '';
+      // const userName1 = item.user?.full_name || '';
+
+      const coachName = item.coach?.full_name?.toLowerCase() || '';
+      const coachName1 = item.coach?.full_name || '';
+
+      return coachName.includes(searchTerm) || coachName1.includes(searchTerm);
+      //userName.includes(searchTerm) || userName1.includes(searchTerm) 
+      //|| coachName.includes(searchTerm) || coachName1.includes(searchTerm);
+    });
+  }
+}//item.participant?.Coach?.full_name

@@ -21,7 +21,7 @@ import { FilterPipe } from './services/filter.pipe';
     HomeComponent,
     MainComponent,
     SidebarComponent,
-    FilterPipe
+    //FilterPipe
   ],
   imports: [
     BrowserModule,

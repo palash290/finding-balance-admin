@@ -144,12 +144,19 @@
                 </a>
             </p>
 
-            <div class="ct_show_uploaded_audio_box mt-3 ct_light_grey_bg">
-                <div class="d-flex align-items-center gap-3">
-                    <audio *ngIf="feed.mediaUrl" controls class="custom-audio-player">
-                        <source [src]="feed.mediaUrl" type="audio/mpeg">
-                        Your browser does not support the audio element.
-                    </audio>
+            <div class="ct_show_uploaded_audio_box ct_show_uploaded_audio_box_bg mt-3 ct_light_grey_bg"
+                [ngStyle]="{ 'background-image': 'url(' + (feed?.thumbnailUrl ? feed.thumbnailUrl : 'assets/img/audio_bg_img_2434.jpg') + ')'}">
+
+                <div class="ct_audio_play_icon" (click)="togglePlayPause(i)">
+                    <i *ngIf="!isPlayingA[i]" class="bi bi-play-fill" style="cursor: pointer;"></i>
+                    <i *ngIf="isPlayingA[i]" class="bi bi-pause-fill" style="cursor: pointer;"></i>
+                </div>
+
+                <p style="color: orange;">{{ formatTime(currentTimeA[i]) }} / {{ formatTime(totalDurationA[i]) }}
+                </p>
+
+                <div class="waveform" (click)="wave[i].playPause()" [id]="'waveform' + feed.id"
+                    style="margin-top: 20px; cursor: pointer;">
                 </div>
             </div>
 

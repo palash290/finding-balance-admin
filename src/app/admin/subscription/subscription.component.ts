@@ -10,12 +10,13 @@ export class SubscriptionComponent {
 
   paidUsers: any;
   paidCoaches: any;
+  searchQuery: string = '';
 
   constructor(private service: SharedService) {}
 
   ngOnInit() {
     this.getUsers();
-    this.getCoaches();
+    //this.getCoaches();
   }
 
   getUsers() {
@@ -33,6 +34,7 @@ export class SubscriptionComponent {
     this.service.getApi('coachSubscription').subscribe({
       next: resp => {
         this.paidCoaches = resp.data.coachSubscriptions;
+       // this.searchQuery = '';
       },
       error: error => {
         console.log(error.message)

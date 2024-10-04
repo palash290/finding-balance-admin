@@ -2,6 +2,8 @@ import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { ToastrService } from 'ngx-toastr';
+import { WaveService } from 'angular-wavesurfer-service';
+import WaveSurfer from 'wavesurfer.js';
 
 @Component({
   selector: 'app-teams',
@@ -18,7 +20,16 @@ export class TeamsComponent {
   updateId: any;
   searchQueryFilter = '';
 
-  constructor(private route: Router, private service: SharedService, private toastr: ToastrService) { }
+  wave: WaveSurfer[] = [];
+  currentTimeA: number[] = [];
+  totalDurationA: number[] = [];
+
+  tracks: number[] = Array(50).fill(0); // Array of track heights
+  trackHeights: number[] = Array(50).fill(20); // Initial heights of tracks
+  highlightedBars: number = 0; // Number of highlighted bars
+  isPlayingA: boolean[] = [];
+
+  constructor(private route: Router, private service: SharedService, private toastr: ToastrService, public waveService: WaveService) { }
 
   toSee: boolean = true
   seeGroupMembesr() {
@@ -109,12 +120,64 @@ export class TeamsComponent {
   getCommunityPosts(allPosts: any) {
     this.service.getApi(`allTeams/${this.communityId}`).subscribe({
       next: resp => {
-        this.communityFeeds = allPosts?.map((item: any) => ({ ...item, isExpanded: false, isPlaying: false }));
+        this.communityFeeds = allPosts?.map((item: any) => ({ ...item, isExpanded: false, isPlaying: false })).reverse();
+
+        setTimeout(() => {
+          this.communityFeeds?.forEach((item: any, index: any) => {
+            const waveformId = '#waveform' + item.id;
+            const waveInstance: any = this.waveService.create({
+              container: waveformId,
+              waveColor: '#fff',
+              progressColor: '#e58934',
+              // cursorColor: '#ff5722',
+              responsive: true,
+              height: 50,
+              barWidth: 3,
+              barGap: 6
+            });
+            this.wave.push(waveInstance); // Store the instance for later use
+
+            waveInstance.load(item?.mediaUrl);
+
+            waveInstance.on('ready', () => {
+              const index = this.communityFeeds.findIndex((audio: { id: any; }) => audio.id === item.id);
+              this.totalDurationA[index] = waveInstance.getDuration();
+            });
+
+            waveInstance.on('audioprocess', () => {
+              const index = this.communityFeeds.findIndex((audio: { id: any; }) => audio.id === item.id);
+              this.currentTimeA[index] = waveInstance.getCurrentTime();
+            });
+
+            waveInstance.on('play', () => {
+              this.isPlayingA[index] = true;  // Update to playing state
+              this.stopOtherAudios(index);   // Stop all other audios when one plays
+            });
+
+            waveInstance.on('pause', () => {
+              this.isPlayingA[index] = false; // Update to paused state
+            });
+
+          });
+        }, 200);
       },
       error: error => {
         console.log(error.message)
       }
     });
+  }
+
+  stopOtherAudios(currentIndex: number) {
+    this.wave.forEach((waveInstance, index) => {
+      if (index !== currentIndex) {
+        waveInstance.pause();
+        this.isPlayingA[index] = false; // Reset play state for other audios
+      }
+    });
+  }
+
+  togglePlayPause(index: number): void {
+    this.wave[index].playPause();
   }
 
   croppedImage: any | ArrayBuffer | null = null;
@@ -221,10 +284,20 @@ export class TeamsComponent {
     videoElement.currentTime = time;
   }
 
+  // formatTime(time: number): string {
+  //   const minutes = Math.floor(time / 60);
+  //   const seconds = Math.floor(time % 60);
+  //   return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  // }
+
   formatTime(time: number): string {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    if (time) {
+      const minutes = Math.floor(time / 60);
+      const seconds = Math.floor(time % 60);
+      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    } else {
+      return `00:00`;
+    }
   }
 
 
