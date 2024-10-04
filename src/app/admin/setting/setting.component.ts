@@ -16,6 +16,7 @@ export class SettingComponent {
   userDetails: any;
   role: any;
   name: any;
+  email: any;
 
   constructor(private srevice: SharedService, private toastr: ToastrService, private route: Router, private location: Location) { }
   ngOnInit(): void {
@@ -23,6 +24,7 @@ export class SettingComponent {
     const data = JSON.parse(jaonData)
     this.userDetails = data;
     this.name = this.userDetails.full_name;
+    this.email = this.userDetails.email;
     this.grtProfile();
   }
 

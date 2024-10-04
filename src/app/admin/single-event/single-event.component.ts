@@ -81,11 +81,11 @@ export class SingleEventComponent {
   // }
 
   getEventId(eventId: any) {
-    this.router.navigateByUrl(`user/main/events/${eventId}`)
+    this.router.navigateByUrl(`admin/main/events/${eventId}`)
   }
 
   getEventEditId(eventId: any) {
-    this.router.navigateByUrl(`user/main/edit-event/${eventId}`)
+    this.router.navigateByUrl(`admin/main/edit-event/${eventId}`)
   }
 
   backClicked() {

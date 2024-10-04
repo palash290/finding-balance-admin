@@ -26,11 +26,13 @@
                 <span class="ct_orange_text ct_fs_18 ct_ff_roboto ct_fw_600">{{eventData?.date | date:'d MMM y'}}</span>
             </div>
 
-
-            <div (click)="getPaidGuest()" style="cursor: pointer;" data-bs-toggle="modal"
+            @if(eventData.isPaid == 1){
+                <div (click)="getPaidGuest()" style="cursor: pointer;" data-bs-toggle="modal"
                 data-bs-target="#ct_followed_coaches1">
                 <a class="ct_orange_btn mt-2 ct_border_radius_10">See All Paid Guest</a>
             </div>
+            }
+          
 
 
 

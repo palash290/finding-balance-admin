@@ -12,7 +12,7 @@
         <ul class="ct_message_user_lit ct_message_community_scroll ct_community_sidebar mt-3" (click)="openChat()">
             <div *ngIf="(!communityData || (communityData | filter:searchQueryFilter)?.length === 0)"
                 class="text-center mt-4">
-                <p class="ct_fs_15 text-white">No community found</p>
+                <p class="ct_fs_15 text-white">No team found</p>
             </div>
             <!-- add This Class active when chat open  -->
             <li class="mt-3" *ngFor="let data of communityData | filter:searchQueryFilter"

@@ -366,9 +366,9 @@ export class TeamsComponent {
 
   getCoachId(uderId: any, role: any) {
     if (uderId == this.userId) {
-      this.route.navigateByUrl('/user/main/my-profile')
+      this.route.navigateByUrl('/admin/main/my-profile')
     } else {
-      this.route.navigateByUrl(`user/main/my-profile/${uderId}/${role}`);
+      this.route.navigateByUrl(`admin/main/my-profile/${uderId}/${role}`);
     }
   }
 

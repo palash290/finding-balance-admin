@@ -95,7 +95,7 @@ export class CommunitiesComponent {
         this.communityImg = resp.data.mediaUrl;
         //debugger
         this.communityParticipants = resp.data.Participant;
-
+        //debugger
         this.communityAdminid = resp.data.admin.id;
         this.communityAdminName = resp.data.admin.full_name;
         this.communityAdminImg = resp.data.admin.avatar_url;
@@ -367,9 +367,9 @@ export class CommunitiesComponent {
 
   getCoachId(uderId: any, role: any) {
     if (uderId == this.userId) {
-      this.route.navigateByUrl('/user/main/my-profile')
+      this.route.navigateByUrl('/admin/main/my-profile')
     } else {
-      this.route.navigateByUrl(`user/main/my-profile/${uderId}/${role}`);
+      this.route.navigateByUrl(`/admin/main/my-profile/${uderId}/${role}`);
     }
   }
 

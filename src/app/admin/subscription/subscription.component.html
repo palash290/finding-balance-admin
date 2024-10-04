@@ -6,6 +6,10 @@
     </div>
 </div>
 
+<div class="d-flex align-items-center justify-content-between ct_pt_20">
+    <h4 class="mb-0 ct_fw_600 ct_fs_20 text-white ct_ff_roboto">All Subscriptions</h4>
+
+</div>
 <div class="d-flex align-items-center justify-content-between mt-3">
     <div class="ct_subscription_tab">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -36,6 +40,7 @@
             Update Plan Price</a>
     </div> -->
 </div>
+
 <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
         <div class="table-responsive">
@@ -43,8 +48,9 @@
             <table class="table ct_subcription_table">
                 <thead>
                     <tr>
+                        <th>S No.</th>
                         <th style="width: 44px;"></th>
-                        <th>User full name</th>
+                        <th>Name</th>
                         <th>Price (USD)</th>
                         <th>Started from </th>
                         <th>Expire on</th>
@@ -54,14 +60,16 @@
                 <div *ngIf="(!paidUsers || (paidUsers | chatFilter:searchQuery)?.length == 0)" class="text-center mt-4">
                     <p class="ct_fs_15 text-white">No users found</p>
                 </div>
-                <tbody *ngFor="let user of paidUsers | chatFilter:searchQuery">
+                <tbody *ngFor="let user of paidUsers | chatFilter:searchQuery; let i = index">
                     <tr>
-                        <td><img src="assets/img/user_img_1.png" alt="" class="ct_img_44"></td>
+                        <td>{{i+1}}</td>
+                        <td><img [src]="user.user.avatar_url ? user.user.avatar_url : '/assets/img/np_pro.png'" alt=""
+                                class="ct_img_44"></td>
                         <td>{{user.user.full_name}}</td>
                         <td>{{user.plan.price}}</td>
                         <td>{{user.created_at | date:'dd-MMM-yyyy'}}</td>
                         <td>{{user.expired_at | date:'dd-MMM-yyyy'}}</td>
-                        <td class="text-end" *ngIf="user.status=='Active'"><span class="ct_green_text">Working</span>
+                        <td class="text-end" *ngIf="user.status=='Active'"><span class="ct_green_text">Active</span>
                         </td>
                         <td class="text-end" *ngIf="user.status!='Active'"><span class="ct_red_text">Expired</span></td>
                     </tr>
@@ -77,8 +85,9 @@
             <table class="table ct_subcription_table">
                 <thead>
                     <tr>
+                        <th>S No.</th>
                         <th style="width: 44px;"></th>
-                        <th>User full name</th>
+                        <th>Name</th>
                         <th>Price (USD)</th>
                         <th>Started from </th>
                         <th>Expire on</th>
@@ -89,14 +98,16 @@
                     class="text-center mt-4">
                     <p class="ct_fs_15 text-white">No coaches found</p>
                 </div>
-                <tbody *ngFor="let coach of paidCoaches | chatFilter2:searchQuery">
+                <tbody *ngFor="let coach of paidCoaches | chatFilter2:searchQuery; let i = index">
                     <tr>
-                        <td><img src="assets/img/user_img_1.png" alt="" class="ct_img_44"></td>
+                        <td>{{i+1}}</td>
+                        <td><img [src]="coach.coach.avatar_url ? coach.coach.avatar_url : '/assets/img/np_pro.png'" alt=""
+                                class="ct_img_44"></td>
                         <td>{{coach.coach.full_name}}</td>
                         <td>{{coach.plan.price}}</td>
                         <td>{{coach.created_at | date:'dd-MMM-yyyy'}}</td>
                         <td>{{coach.expired_at | date:'dd-MMM-yyyy'}}</td>
-                        <td class="text-end" *ngIf="coach.status=='Active'"><span class="ct_green_text">Working</span>
+                        <td class="text-end" *ngIf="coach.status=='Active'"><span class="ct_green_text">Active</span>
                         </td>
                         <td class="text-end" *ngIf="coach.status!='Active'"><span class="ct_red_text">Expired</span>
                         </td>
