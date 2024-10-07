@@ -19,6 +19,9 @@
     /* .ct_ms_0_res_123{
         margin-left: 0px !important;
     } */
+    .ct_animated_login_imgages img {
+        max-width: 298px;
+    }
 }
 
 @media screen and (max-width:1199px){
@@ -33,6 +36,9 @@
     }
     .ct_right_message_area{
         padding-left: 0px;
+    }
+    .ct_animated_login_imgages img {
+        max-width: 298px;
     }
     .ct_left_message_list{
         padding-right: 0px;

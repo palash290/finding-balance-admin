@@ -523,10 +523,12 @@ footer {
 }
 .ct_animated_login_imgages{
     position: relative;
+   
 }
 .ct_animated_login_imgages img{
     width: 100%;
     transition: 0.5s ease all;
+    margin-inline: auto;
 }
 .ct_i_am_coach_img{
     position: absolute;
