@@ -76,9 +76,10 @@
         left: 0px;
     }
     
-    section.ct_panel_main_bg.ct_show_menu .ct_right_side_panel{
-        /* width: calc(100% - 336px); */
-        /* margin-left: 336px; */
+    
+    .ct_animated_login_imgages img {
+        max-width: 350px;
+
     }
     
    

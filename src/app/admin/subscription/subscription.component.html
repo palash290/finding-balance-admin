@@ -57,10 +57,15 @@
                         <th class="text-end">Status</th>
                     </tr>
                 </thead>
-                <div *ngIf="(!paidUsers || (paidUsers | chatFilter:searchQuery)?.length == 0)" class="text-center mt-4">
-                    <p class="ct_fs_15 text-white">No users found</p>
-                </div>
+              <tbody>
+                <tr>
+                    <td colspan="7">  <div *ngIf="(!paidUsers || (paidUsers | chatFilter:searchQuery)?.length == 0)" class="text-center mt-4">
+                        <p class="ct_fs_15 text-white text-center">No users found</p>
+                    </div></td>
+                </tr>
+              </tbody>
                 <tbody *ngFor="let user of paidUsers | chatFilter:searchQuery; let i = index">
+                  
                     <tr>
                         <td>{{i+1}}</td>
                         <td><img [src]="user.user.avatar_url ? user.user.avatar_url : '/assets/img/np_pro.png'" alt=""
@@ -94,10 +99,16 @@
                         <th class="text-end">Status</th>
                     </tr>
                 </thead>
-                <div *ngIf="(!paidCoaches || (paidCoaches | chatFilter2:searchQuery)?.length === 0)"
-                    class="text-center mt-4">
-                    <p class="ct_fs_15 text-white">No coaches found</p>
-                </div>
+              <tbody>
+                <tr>
+                    <td colspan="7">
+                        <div *ngIf="(!paidCoaches || (paidCoaches | chatFilter2:searchQuery)?.length === 0)"
+                        class="text-center mt-4">
+                        <p class="ct_fs_15 text-white text-center">No coaches found</p>
+                    </div>
+                    </td>
+                </tr>
+              </tbody>
                 <tbody *ngFor="let coach of paidCoaches | chatFilter2:searchQuery; let i = index">
                     <tr>
                         <td>{{i+1}}</td>

@@ -16,9 +16,9 @@
         <!-- <p class="mb-0 text-white" style="white-space: nowrap;">Filter post by :</p> -->
 
         <div class="d-flex align-items-center gap-3 ct_flex_575 mt-3">
-            <div class="ct_filter_search_input_140">
-                <span class="text-white ct_text_op_5 ">Filtered By Category:</span>
-                <select class="" [(ngModel)]="categoryId" (change)="onCategoryChange($event)" style="cursor: pointer;">
+            <div class="ct_filter_search_input_140 d-flex align-items-center gap-3">
+                <span class="text-white ct_text_op_5" style="white-space: nowrap;">Filtered By Category:</span>
+                <select class="form-control ct_custom_input" [(ngModel)]="categoryId" (change)="onCategoryChange($event)" style="cursor: pointer;">
                     <option value="">All</option>
                     <option *ngFor="let category of categories" [value]="category.id">{{ category.name
                         }}</option>

@@ -16,3 +16,7 @@
     display: grid;
     grid-template-columns: auto auto;
 }
+.ct_event_scroll {
+    height: calc(100% - 184px);
+    max-height: calc(100% - 184px)!important;
+}
