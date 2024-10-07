@@ -167,6 +167,11 @@
     word-break: break-all;
   }
   
+.ct_dash_inner_scroll {
+  height: calc(100vh - 172px);
+  overflow-y: auto;
+}
+  
   @media screen and (max-width:1199px){
     .ct_grid_4 {
       grid-template-columns: repeat(3, 1fr);

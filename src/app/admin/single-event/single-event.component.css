@@ -22,3 +22,8 @@ div#ct_followed_coaches1 .modal-content {
     height: 22px;
     width: 22px;
   }
+
+  .ct_dash_inner_scroll {
+  height: calc(100vh - 172px);
+  overflow-y: auto;
+}

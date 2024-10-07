@@ -20,3 +20,10 @@
     height: calc(100% - 184px);
     max-height: calc(100% - 184px)!important;
 }
+
+
+
+.ct_dash_inner_scroll {
+    height: calc(100vh - 123px);
+    overflow-y: auto;
+}

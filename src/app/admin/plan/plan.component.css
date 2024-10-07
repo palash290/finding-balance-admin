@@ -27,11 +27,13 @@
 .ct_subcription_table th{
     color: var(--orange);
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .ct_subcription_table td{
     color: #fff;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 div#ct_add_user .modal-content,
@@ -46,4 +48,9 @@ div#ct_followed_coaches .modal-content {
     background-color: #111010;
     border: 1px solid var(--orange);
     padding: 22px;
+}
+
+.ct_dash_inner_scroll {
+    height: calc(100vh - 126px);
+    overflow-y: auto;
 }

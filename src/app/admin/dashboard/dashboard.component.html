@@ -1,172 +1,174 @@
-<div class="ct_statics_black_bg">
-    <div>
-        <h4 class="ct_fs_18 ct_fw_600 text-white">Statistics</h4>
-        <p class="ct_fs_12  ct_light_grey_text1 ct_fw_500">Coaches & Users</p>
+<div class="ct_dash_inner_scroll">
+    <div class="ct_statics_black_bg">
+        <div>
+            <h4 class="ct_fs_18 ct_fw_600 text-white">Statistics</h4>
+            <p class="ct_fs_12  ct_light_grey_text1 ct_fw_500">Coaches & Users</p>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #242639; cursor: pointer;"
+                    routerLink="/admin/main/coaches">
+                    <figure>
+                        <img src="assets/img/statics_icon_1.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalCoaches}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Coaches</p>
+                            <!-- <p class="mb-0 ct_fs_12 ct_orange_text">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #2F2439; cursor: pointer;" routerLink="/admin/main/users">
+                    <figure>
+                        <img src="assets/img/statics_icon_2.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalUsers}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Users</p>
+                            <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #392424; cursor: pointer;" routerLink="/admin/main/subscription">
+                    <figure>
+                        <img src="assets/img/statics_icon_2.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalSubscriptionCount}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Subscriptions</p>
+                            <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #243339; cursor: pointer;" routerLink="/admin/main/subscription">
+                    <figure>
+                        <img src="assets/img/statics_icon_2.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.activeSubscriptionCount}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Active Subscriptions</p>
+                            <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+    
+        </div>
     </div>
-    <div class="row mt-4">
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #242639; cursor: pointer;"
-                routerLink="/admin/main/coaches">
-                <figure>
-                    <img src="assets/img/statics_icon_1.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalCoaches}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Coaches</p>
-                        <!-- <p class="mb-0 ct_fs_12 ct_orange_text">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
-            </div>
+    <div class="ct_statics_black_bg mt-2">
+        <div>
+            <h4 class="ct_fs_18 ct_fw_600 text-white">Statistics</h4>
+            <p class="ct_fs_12  ct_light_grey_text1 ct_fw_500">Communities & Events</p>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #2F2439; cursor: pointer;" routerLink="/admin/main/users">
-                <figure>
-                    <img src="assets/img/statics_icon_2.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalUsers}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Users</p>
-                        <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
+        <div class="row mt-4">
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #243339; cursor: pointer;" routerLink="/admin/main/communities">
+                    <figure>
+                        <img src="assets/img/statics_icon_1.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalCommunities}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Communities</p>
+                            <!-- <p class="mb-0 ct_fs_12 ct_orange_text">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #392424; cursor: pointer;" routerLink="/admin/main/subscription">
-                <figure>
-                    <img src="assets/img/statics_icon_2.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalSubscriptionCount}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Subscriptions</p>
-                        <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #392424; cursor: pointer;" routerLink="/admin/main/teams">
+                    <figure>
+                        <img src="assets/img/statics_icon_2.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalTeams}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Teams</p>
+                            <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #243339; cursor: pointer;" routerLink="/admin/main/subscription">
-                <figure>
-                    <img src="assets/img/statics_icon_2.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.activeSubscriptionCount}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Active Subscriptions</p>
-                        <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #2F2439; cursor: pointer;" routerLink="/admin/main/communities">
+                    <figure>
+                        <img src="assets/img/statics_icon_2.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.communityPostsCount}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Communities Post Counts</p>
+                            <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #242639; cursor: pointer;" routerLink="/admin/main/teams">
+                    <figure>
+                        <img src="assets/img/statics_icon_2.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.teamPostsCount}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Teams Post Counts</p>
+                            <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+    
         </div>
-
     </div>
-</div>
-<div class="ct_statics_black_bg mt-2">
-    <div>
-        <h4 class="ct_fs_18 ct_fw_600 text-white">Statistics</h4>
-        <p class="ct_fs_12  ct_light_grey_text1 ct_fw_500">Communities & Events</p>
-    </div>
-    <div class="row mt-4">
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #243339; cursor: pointer;" routerLink="/admin/main/communities">
-                <figure>
-                    <img src="assets/img/statics_icon_1.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalCommunities}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Communities</p>
-                        <!-- <p class="mb-0 ct_fs_12 ct_orange_text">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
-            </div>
+    <div class="ct_statics_black_bg mt-2">
+        <div>
+            <h4 class="ct_fs_18 ct_fw_600 text-white">Statistics</h4>
+            <p class="ct_fs_12  ct_light_grey_text1 ct_fw_500">Events & Posts</p>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #392424; cursor: pointer;" routerLink="/admin/main/teams">
-                <figure>
-                    <img src="assets/img/statics_icon_2.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalTeams}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Teams</p>
-                        <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
+        <div class="row mt-4">
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #242639; cursor: pointer;" routerLink="/admin/main/events">
+                    <figure>
+                        <img src="assets/img/statics_icon_1.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalEvents}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Events</p>
+                            <!-- <p class="mb-0 ct_fs_12 ct_orange_text">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #2F2439; cursor: pointer;" routerLink="/admin/main/communities">
-                <figure>
-                    <img src="assets/img/statics_icon_2.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.communityPostsCount}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Communities Post Counts</p>
-                        <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #2F2439; cursor: pointer;" routerLink="/admin/main/events">
+                    <figure>
+                        <img src="assets/img/statics_icon_2.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalPaidEvents}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Paid Events</p>
+                            <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #242639; cursor: pointer;" routerLink="/admin/main/teams">
-                <figure>
-                    <img src="assets/img/statics_icon_2.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.teamPostsCount}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Teams Post Counts</p>
-                        <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #392424; cursor: pointer;">
+                    <figure>
+                        <img src="assets/img/statics_icon_2.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.feedPostsCount}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Feed Posts</p>
+                            <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
-        </div>
-
-    </div>
-</div>
-<div class="ct_statics_black_bg mt-2">
-    <div>
-        <h4 class="ct_fs_18 ct_fw_600 text-white">Statistics</h4>
-        <p class="ct_fs_12  ct_light_grey_text1 ct_fw_500">Events & Posts</p>
-    </div>
-    <div class="row mt-4">
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #242639; cursor: pointer;" routerLink="/admin/main/events">
-                <figure>
-                    <img src="assets/img/statics_icon_1.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalEvents}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Events</p>
-                        <!-- <p class="mb-0 ct_fs_12 ct_orange_text">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="ct_statics_card" style="background-color: #243339; cursor: pointer;">
+                    <figure>
+                        <img src="assets/img/statics_icon_2.svg" alt="">
+                        <figcaption class="mt-3">
+                            <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalPaidPosts}}</h4>
+                            <p class="ct_fs_14 text-white mb-2">Total Adhoc Posts</p>
+                            <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
+    
         </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #2F2439; cursor: pointer;" routerLink="/admin/main/events">
-                <figure>
-                    <img src="assets/img/statics_icon_2.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalPaidEvents}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Paid Events</p>
-                        <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #392424; cursor: pointer;">
-                <figure>
-                    <img src="assets/img/statics_icon_2.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.feedPostsCount}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Feed Posts</p>
-                        <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="ct_statics_card" style="background-color: #243339; cursor: pointer;">
-                <figure>
-                    <img src="assets/img/statics_icon_2.svg" alt="">
-                    <figcaption class="mt-3">
-                        <h4 class="ct_fs_28 ct_fw_600 text-white mb-3">{{dashBoard?.totalPaidPosts}}</h4>
-                        <p class="ct_fs_14 text-white mb-2">Total Adhoc Posts</p>
-                        <!-- <p class="mb-0 ct_fs_12" style="color: #A9DFD8;">+10% from yesterday</p> -->
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
-
     </div>
 </div>

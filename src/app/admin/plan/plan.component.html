@@ -1,62 +1,64 @@
-<div class="tab-content">
-    <div class="d-flex align-items-center justify-content-between ct_pt_20">
-        <h4 class="mb-0 ct_fw_600 ct_fs_20 text-white ct_ff_roboto">All Plans</h4>
-       
-    </div>
-    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-        <div class="table-responsive">
-
-            <table class="table ct_subcription_table">
-                <thead>
-                    <tr>
-                        <th>Plan Name</th>
-                        <th>Price (USD)</th>
-                        <th>Type </th>
-                        <th>Details</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let user of paidUsers">
-                    <tr>
-                        <td>{{user.name}}</td>
-                        <td>{{user.price}}</td>
-                        <td>{{user.type}}</td>
-                        <td>
-
-                            @if(user.type == 'USER'){
-                            <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
-                                data-bs-toggle="modal" data-bs-target="#ct_followed_coaches">See
-                                Details</button>
-                            } @else{
-                            <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
-                                data-bs-toggle="modal" data-bs-target="#ct_followed_user">See
-                                Details</button>
-                            }
-                        </td>
-                        <td>
-                            @if(user.type == 'USER'){
-                            <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
-                                style="min-width: 5rem;" data-bs-toggle="modal" data-bs-target="#ct_add_user"
-                                (click)="getUserPrice(user.price, user.id)">
-                                Edit
-                            </button>
-                            } @else{
-                            <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
-                                style="min-width: 5rem;" data-bs-toggle="modal" data-bs-target="#ct_add_coach"
-                                (click)="getCoachPrice(user.price, user.id)">
-                                Edit
-                            </button>
-                            }
-
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-
+<div class="ct_dash_inner_scroll">
+    <div class="tab-content">
+        <div class="d-flex align-items-center justify-content-between ct_pt_20">
+            <h4 class="mb-0 ct_fw_600 ct_fs_20 text-white ct_ff_roboto">All Plans</h4>
+           
         </div>
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="table-responsive">
+    
+                <table class="table ct_subcription_table">
+                    <thead>
+                        <tr>
+                            <th>Plan Name</th>
+                            <th>Price (USD)</th>
+                            <th>Type </th>
+                            <th>Details</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let user of paidUsers">
+                        <tr>
+                            <td>{{user.name}}</td>
+                            <td>{{user.price}}</td>
+                            <td>{{user.type}}</td>
+                            <td>
+    
+                                @if(user.type == 'USER'){
+                                <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
+                                    data-bs-toggle="modal" data-bs-target="#ct_followed_coaches">See
+                                    Details</button>
+                                } @else{
+                                <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
+                                    data-bs-toggle="modal" data-bs-target="#ct_followed_user">See
+                                    Details</button>
+                                }
+                            </td>
+                            <td>
+                                @if(user.type == 'USER'){
+                                <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
+                                    style="min-width: 5rem;" data-bs-toggle="modal" data-bs-target="#ct_add_user"
+                                    (click)="getUserPrice(user.price, user.id)">
+                                    Edit
+                                </button>
+                                } @else{
+                                <button class="ct_orange_btn ct_border_radius_10 px-2 py-2 h-auto ct_fs_13"
+                                    style="min-width: 5rem;" data-bs-toggle="modal" data-bs-target="#ct_add_coach"
+                                    (click)="getCoachPrice(user.price, user.id)">
+                                    Edit
+                                </button>
+                                }
+    
+                            </td>
+                        </tr>
+    
+                    </tbody>
+                </table>
+    
+            </div>
+        </div>
+    
     </div>
-
 </div>
 
 

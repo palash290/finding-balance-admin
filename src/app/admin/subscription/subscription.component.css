@@ -27,9 +27,17 @@
 .ct_subcription_table th{
     color: var(--orange);
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .ct_subcription_table td{
     color: #fff;
     font-weight: 500;
+    white-space: nowrap;
+}
+
+
+.ct_dash_inner_scroll {
+    height: calc(100vh - 219px);
+    overflow-y: auto;
 }

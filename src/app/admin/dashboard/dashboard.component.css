@@ -13,3 +13,8 @@
     padding: 28px;
     border-radius: 10px;
 }
+
+.ct_dash_inner_scroll {
+    height: calc(100vh - 123px);
+    overflow-y: auto;
+}
