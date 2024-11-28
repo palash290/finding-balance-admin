@@ -136,6 +136,39 @@
                 </li>
 
                 <li (click)="onToggleMenu()">
+                    <a routerLink="/admin/main/reports"
+                        [ngClass]="{ 'ct_menu_active1': isActive('admin/main/reports')}">
+                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.73 3.5H8.27L3 8.77V16.23L8.27 21.5H15.73L21 16.23V8.77L15.73 3.5ZM19 15.4L14.9 19.5H9.1L5 15.4V9.6L9.1 5.5H14.9L19 9.6V15.4Z"
+                                fill="#E58934" />
+                            <path
+                                d="M12 17.5C12.5523 17.5 13 17.0523 13 16.5C13 15.9477 12.5523 15.5 12 15.5C11.4477 15.5 11 15.9477 11 16.5C11 17.0523 11.4477 17.5 12 17.5Z"
+                                fill="#E58934" />
+                            <path d="M11 7.5H13V14.5H11V7.5Z" fill="#E58934" />
+                        </svg>
+
+
+                        Reports</a>
+                </li>
+
+                <!-- <li (click)="onToggleMenu()">
+                    <a routerLink="/admin/main/manage-home"
+                        [ngClass]="{ 'ct_menu_active1': isActive('admin/main/manage-home')}">
+                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.73 3.5H8.27L3 8.77V16.23L8.27 21.5H15.73L21 16.23V8.77L15.73 3.5ZM19 15.4L14.9 19.5H9.1L5 15.4V9.6L9.1 5.5H14.9L19 9.6V15.4Z"
+                                fill="#E58934" />
+                            <path
+                                d="M12 17.5C12.5523 17.5 13 17.0523 13 16.5C13 15.9477 12.5523 15.5 12 15.5C11.4477 15.5 11 15.9477 11 16.5C11 17.0523 11.4477 17.5 12 17.5Z"
+                                fill="#E58934" />
+                            <path d="M11 7.5H13V14.5H11V7.5Z" fill="#E58934" />
+                        </svg>
+
+                        Manage-Home</a>
+                </li> -->
+
+                <li (click)="onToggleMenu()">
                     <a routerLink="/admin/main/settings"
                         [ngClass]="{ 'ct_menu_active1': isActive('admin/main/settings')}">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

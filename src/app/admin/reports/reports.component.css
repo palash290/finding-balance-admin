@@ -1,0 +1,210 @@
+.spinner-border {
+  height: 20px;
+  width: 20px;
+}
+
+.ct_box_2_full_active {
+  grid-template-columns: 100% !important;
+}
+
+.ct_my_interent_scroll {
+  max-height: calc(100vh - 207px);
+  height: calc(100vh - 207px);
+}
+
+.ct_dash_inner_scroll {
+  height: calc(100vh - 171px);
+  overflow-y: auto;
+}
+
+.ct_grid_auto_auto {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+
+
+
+.table {
+
+  --bs-table-bg: #1E1E1E;
+
+}
+
+.table>:not(caption)>*>* {
+
+  color: var(--bs-table-color-state, var(--bs-table-color-type, #ffefef));
+
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: inherit;
+  border-width: 0;
+}
+
+
+
+div#ct_edit_community12 .modal-content {
+  background-color: #111010;
+  border: 1px solid var(--orange);
+  padding: 22px;
+}
+
+.ct_subscription_tab ul#pills-tab {
+  margin-bottom: 0px;
+  border: 1px solid hwb(0deg 100% 0% / 42%);
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.ct_subscription_tab li.nav-item button {
+  height: 33px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: 600;
+  width: 100px;
+  text-align: center;
+  border-radius: 8px;
+  justify-content: center;
+}
+
+.ct_subscription_tab li.nav-item button.active {
+  background-color: var(--orange);
+}
+
+.ct_subcription_table.table>:not(caption)>*>* {
+  background-color: transparent;
+  border: 0px;
+  vertical-align: middle;
+}
+
+.ct_subcription_table th {
+  color: var(--orange);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ct_subcription_table td {
+  color: #fff;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+
+.ct_dash_inner_scroll {
+  height: calc(100vh - 167px);
+  overflow-y: auto;
+}
+
+.play-button{
+  width: 96px;
+  height: 96px;
+  border-radius: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 2;
+  background-color: rgb(0 0 0 / 73%);
+  box-shadow: -0.73px 0.73px 0.73px -1.46px #FFFFFF59 inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:1px solid #fff;
+}
+.play-button img {
+
+  width: 32px;
+  height: 32px;
+  filter: invert(1);
+}
+
+
+
+
+
+
+.custom-seekbar {
+  width: 100%; /* Make the seekbar take full width */
+  position: absolute;
+  bottom: 0; /* Position it at the bottom of the container */
+  left: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 2; /* Ensure it appears on top */
+  background: transparent;
+  height: 4px;
+  -webkit-appearance: none;
+}
+
+.custom-seekbar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 50%;
+  margin: -3px;
+}
+
+.custom-seekbar::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.custom-seekbar::-ms-thumb {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.custom-seekbar::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #ccc;
+}
+
+.custom-seekbar::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #ccc;
+}
+
+.custom-seekbar::-ms-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #ccc;
+  border-color: transparent;
+  color: transparent;
+}
+
+.fullscreen-button {
+  background: none; /* No background */
+  border: none; /* No border */
+  position: absolute; /* Position it relative to the video container */
+  top: 10px; /* Adjust position */
+  right: 10px; /* Adjust position */
+  color: rgb(253, 247, 247); /* Change the icon color */
+  font-size: 24px; /* Adjust icon size */
+  cursor: pointer; /* Change cursor on hover */
+  z-index: 10; /* Ensure it appears above the video */
+}
+
+.fullscreen-button:hover {
+  color: rgb(28, 25, 25); /* Change color on hover for better visibility */
+}

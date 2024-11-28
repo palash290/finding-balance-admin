@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormGroup } from '@angular/forms';
 import { WaveService } from 'angular-wavesurfer-service';
 import WaveSurfer from 'wavesurfer.js';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-communities',
@@ -30,7 +31,7 @@ export class CommunitiesComponent {
   highlightedBars: number = 0; // Number of highlighted bars
   isPlayingA: boolean[] = [];
 
-  constructor(private route: Router, private service: SharedService, private toastr: ToastrService, public waveService: WaveService) { }
+  constructor(private route: Router, private service: SharedService, public waveService: WaveService) { }
 
   toSee: boolean = true
   seeGroupMembesr() {
@@ -126,40 +127,46 @@ export class CommunitiesComponent {
 
         setTimeout(() => {
           this.communityFeeds?.forEach((item: any, index: any) => {
-            const waveformId = '#waveform' + item.id;
-            const waveInstance: any = this.waveService.create({
-              container: waveformId,
-              waveColor: '#fff',
-              progressColor: '#e58934',
-              // cursorColor: '#ff5722',
-              responsive: true,
-              height: 50,
-              barWidth: 3,
-              barGap: 6
-            });
-            this.wave.push(waveInstance); // Store the instance for later use
-
-            waveInstance.load(item?.mediaUrl);
-
-            waveInstance.on('ready', () => {
-              const index = this.communityFeeds.findIndex((audio: { id: any; }) => audio.id === item.id);
-              this.totalDurationA[index] = waveInstance.getDuration();
-            });
-
-            waveInstance.on('audioprocess', () => {
-              const index = this.communityFeeds.findIndex((audio: { id: any; }) => audio.id === item.id);
-              this.currentTimeA[index] = waveInstance.getCurrentTime();
-            });
-
-            waveInstance.on('play', () => {
-              this.isPlayingA[index] = true;  // Update to playing state
-              this.stopOtherAudios(index);   // Stop all other audios when one plays
-            });
-
-            waveInstance.on('pause', () => {
-              this.isPlayingA[index] = false; // Update to paused state
-            });
-
+            if (item.type == 'PODCAST') {
+              const waveformId = '#waveform' + item.id;
+              const waveInstance: any = this.waveService.create({
+                container: waveformId,
+                waveColor: '#fff',
+                progressColor: '#e58934',
+                // cursorColor: '#ff5722',
+                responsive: true,
+                height: 50,
+                barWidth: 3,
+                barGap: 6
+              });
+              // this.wave.push(waveInstance); // Store the instance for later use
+  
+              // waveInstance.load(item?.mediaUrl);
+              this.wave[index] = waveInstance;
+              waveInstance.load(item?.mediaUrl);
+              this.isPlayingA[index] = false;
+  
+              waveInstance.on('ready', () => {
+                const index = this.communityFeeds.findIndex((audio: { id: any; }) => audio.id === item.id);
+                this.totalDurationA[index] = waveInstance.getDuration();
+              });
+  
+              waveInstance.on('audioprocess', () => {
+                const index = this.communityFeeds.findIndex((audio: { id: any; }) => audio.id === item.id);
+                this.currentTimeA[index] = waveInstance.getCurrentTime();
+              });
+  
+              waveInstance.on('play', () => {
+                this.isPlayingA[index] = true;  // Update to playing state
+                this.stopOtherAudios(index);   // Stop all other audios when one plays
+              });
+  
+              waveInstance.on('pause', () => {
+                this.isPlayingA[index] = false; // Update to paused state
+              });
+  
+            }
+            
           });
         }, 200);
       },
@@ -372,5 +379,45 @@ export class CommunitiesComponent {
       this.route.navigateByUrl(`/admin/main/my-profile/${uderId}/${role}`);
     }
   }
+
+  deleteCommunity() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this community!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.postAPI(`deleteCommunity/${this.communityId}`, null).subscribe({
+          next: (resp) => {
+            if (resp.success) {
+              Swal.fire(
+                'Deleted!',
+                'Your community has been deleted successfully.',
+                'success'
+              );
+              this.getCommunityData();
+              this.communityName = '';
+            } else {
+              this.getCommunityData();
+            }
+          },
+          error: (error) => {
+            Swal.fire(
+              'Error!',
+              'There was an error deleting your community.',
+              'error'
+            );
+            this.getCommunityData();
+            console.error('Error deleting account', error);
+          }
+        });
+      }
+    });
+  }
+  
 
 }

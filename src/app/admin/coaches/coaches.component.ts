@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { SharedService } from '../../services/shared.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-coaches',
@@ -10,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CoachesComponent {
 
+  p: any = 1;
   data: any;
   searchQuery: string = '';
   isFollowing: { [key: number | string]: boolean } = {};
@@ -18,9 +21,59 @@ export class CoachesComponent {
   isCoach: boolean = true;
   role: string | undefined;
 
-  constructor(private router: Router, private service: SharedService, private location: Location) {
+  constructor(private router: Router, private service: SharedService, private location: Location, private toastr: ToastrService) { }
 
+  handleCheckboxChange(row: any) {
+    if (row.status == 0) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You want to active this user!",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes!",
+        cancelButtonText: "No"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.service.postAPI(`toggleCoachStatus/${row.id}`, null).subscribe({
+            next: resp => {
+              //console.log(resp)
+              this.toastr.success(resp.message)
+              this.searchCategories();
+            }
+          })
+        } else {
+          this.searchCategories();
+        }
+      });
+    } else {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You want to deactive this user!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes!",
+        cancelButtonText: "No"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.service.postAPI(`toggleCoachStatus/${row.id}`, null).subscribe({
+            next: resp => {
+              console.log(resp)
+              this.toastr.success(resp.message)
+              this.searchCategories();
+            }
+          })
+        } else {
+          this.searchCategories();
+        }
+      });
+
+    }
   }
+
 
   backClicked() {
     this.location.back();
@@ -100,6 +153,52 @@ export class CoachesComponent {
 
   getCoachId(uderId: any, role: any) {
     this.router.navigateByUrl(`admin/main/my-profile/${uderId}/${role}`)
+  }
+
+
+
+  onUpdateSubscription(user: any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to give this coach a premium subscription for a month!',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const formURlData = new URLSearchParams();
+        formURlData.set('coachId', user.id);
+        formURlData.set('planId', '4');
+        this.service.postAPI(`Gift-subscription`, formURlData.toString()).subscribe({
+          next: (resp) => {
+            if (resp.success) {
+              // Swal.fire(
+              //   'Deleted!',
+              //   'Your post has been deleted successfully.',
+              //   'success'
+              // );
+              this.searchCategories();
+              this.toastr.success(resp.message);
+            } else {
+              this.searchCategories()
+              this.toastr.warning(resp.message);
+            }
+          },
+          error: (error) => {
+            // Swal.fire(
+            //   'Error!',
+            //   'There was an error deleting your post.',
+            //   'error'
+            // );
+            this.searchCategories()
+            this.toastr.error('Something went wrong!');
+            console.error('Error deleting account', error);
+          }
+        });
+      }
+    });
   }
 
 

@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ReportEventComponent } from './report-event.component';
+
+describe('ReportEventComponent', () => {
+  let component: ReportEventComponent;
+  let fixture: ComponentFixture<ReportEventComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ReportEventComponent]
+    })
+    .compileComponents();
+    
+    fixture = TestBed.createComponent(ReportEventComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

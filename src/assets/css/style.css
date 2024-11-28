@@ -221,6 +221,9 @@ header{
     transition: 0.4s ease all;
 
 }
+.ct_orange_btn:hover{
+    color: var(--orange) !important;
+}
 .ct_orange_btn:hover:before{
     transform: scale(1);
 }

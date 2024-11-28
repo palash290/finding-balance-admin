@@ -21,6 +21,29 @@ export class FilterPipe implements PipeTransform {
 }//item.participant?.Coach?.full_name
 
 
+@Pipe({
+  name: 'filter2'
+})
+export class FilterPipe2 implements PipeTransform {
+
+  transform(value: any[], searchTerm: string): any[] {
+    if (!value || !searchTerm) {
+      return value;
+    }
+
+    searchTerm = searchTerm.toLowerCase(); // Convert the search term to lowercase for case-insensitive matching
+
+    return value.filter(item => {
+      return (
+        (item.reportedEntity.post?.coach.full_name && item.reportedEntity.post?.coach.full_name.toLowerCase().includes(searchTerm)) ||
+        (item.reportedEntity.community?.admin.full_name && item.reportedEntity.community?.admin.full_name.toLowerCase().includes(searchTerm)) ||
+        (item.reportedEntity.event?.coach.full_name && item.reportedEntity.event?.coach.full_name.toLowerCase().includes(searchTerm)) ||
+        (item.reporter.user?.full_name && item.reporter.user?.full_name.toLowerCase().includes(searchTerm))
+      );
+    });
+  }
+}
+
 
 
 @Pipe({

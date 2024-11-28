@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { SharedService } from '../../services/shared.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-events',
@@ -10,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class EventsComponent {
 
-  data: any;
+  p: any = 1;
+  //data: any;
   searchQuery: string = '';
   isFollowing: { [key: number | string]: boolean } = {};
   avatar_url_fb: any;
@@ -18,16 +21,7 @@ export class EventsComponent {
 
   role: string | undefined;
 
-  constructor(private router: Router, private service: SharedService, private location: Location) {
-    // this.role = this.service.getRole();
-    // if (this.role == 'USER') {
-    //   this.isCoach = false;
-    // }
-    // if(!this.isCoach){
-    //   this.location.back();
-    //   return
-    // }
-  }
+  constructor(private router: Router, private service: SharedService, private location: Location, private toastr: ToastrService) { }
 
   backClicked() {
     this.location.back();
@@ -85,6 +79,36 @@ export class EventsComponent {
 
   getEventId(eventId: any) {
     this.router.navigateByUrl(`admin/main/single-event/${eventId}`)
+  }
+
+  deleteEvent(id: any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this event!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#e58934',
+      cancelButtonColor: '#949296 ',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.postAPI(`deleteEvent/${id}`, '').subscribe({
+          next: (resp) => {
+            if (resp.success) {
+              this.toastr.success(resp.message)
+              this.searchCategories();
+            } else {
+              this.toastr.warning(resp.message)
+              this.searchCategories();
+            }
+          },
+          error: (error) => {
+            this.searchCategories();
+            console.error('Error deleting account', error);
+          }
+        });
+      }
+    });
   }
 
 

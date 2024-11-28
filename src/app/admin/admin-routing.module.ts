@@ -15,6 +15,8 @@ import { EventsComponent } from './events/events.component';
 import { UpdatePlanComponent } from './update-plan/update-plan.component';
 import { SingleEventComponent } from './single-event/single-event.component';
 import { PlanComponent } from './plan/plan.component';
+import { ReportsComponent } from './reports/reports.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
   {
@@ -79,6 +81,14 @@ const routes: Routes = [
       {
         path: "plan",
         component: PlanComponent,
+      },
+      {
+        path: "reports",
+        component: ReportsComponent,
+      },
+      {
+        path: "manage-home",
+        component: LandingPageComponent,
       },
     ],
   },

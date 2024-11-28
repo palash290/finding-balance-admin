@@ -1,0 +1,23 @@
+.table {
+
+    --bs-table-bg: #1E1E1E;
+   
+  }
+  
+  .table>:not(caption)>*>* {
+  
+    color: var(--bs-table-color-state, var(--bs-table-color-type, #ffefef));
+   
+  }
+  
+  tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-width: 0;
+  }
+  
+
+  div#ct_edit_community .modal-content {
+    background-color: #111010;
+    border: 1px solid var(--orange);
+    padding: 22px;
+}

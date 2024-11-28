@@ -75,6 +75,14 @@ export class SharedService {
     return this.http.patch(this.apiUrl + url, data, { headers: headers })
   };
 
+  deleteAcc(url: any): Observable<any> {
+    const authToken = localStorage.getItem('fbAdminToken');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${authToken}`
+    });
+    return this.http.delete(this.apiUrl + url, { headers: headers })
+  };
+
   logout() {
     localStorage.removeItem('fbAdminToken');
     localStorage.removeItem('adminDetailFb');
@@ -94,6 +102,18 @@ export class SharedService {
     }
   
 
+
+
+
+
+    private searchQuerySource = new BehaviorSubject<string>('');
+    currentSearchQuery = this.searchQuerySource.asObservable();
+  
+  
+    // Update the search query
+    updateSearchQuery(query: string) {
+      this.searchQuerySource.next(query);
+    }
 
     
     private refreshSidebarSource = new BehaviorSubject<void | null>(null);

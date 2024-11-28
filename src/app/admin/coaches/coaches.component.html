@@ -1,24 +1,26 @@
 <div class="ct_box_2_column ct_box_2_full_active">
-    
-    <div>
-        <div class="ct_upload_text">
-            <!-- <img [src]="avatar_url_fb ? avatar_url_fb : 'assets/img/np_pro.png'" alt="" class="ct_img_44 ct_orange_border_1"> -->
 
-            <div class="form-group w-100">
-                <input type="text" class="form-control ct_custom_input w-100" placeholder="Search..."
-                    [(ngModel)]="searchQuery" (ngModelChange)="searchCategories()">
-            </div>
+
+    <div class="ct_upload_text">
+        <!-- <img [src]="avatar_url_fb ? avatar_url_fb : 'assets/img/np_pro.png'" alt="" class="ct_img_44 ct_orange_border_1"> -->
+
+        <div class="form-group w-100">
+            <input type="text" class="form-control ct_custom_input w-100" placeholder="Search..."
+                [(ngModel)]="searchQuery" (ngModelChange)="searchCategories()">
         </div>
+    </div>
+    <div class="ct_dash_inner_scroll">
         <div class="d-flex align-items-center justify-content-between ct_pt_20">
             <h4 class="mb-0 ct_fw_600 ct_fs_20 text-white ct_ff_roboto">All Coaches</h4>
-           
+
         </div>
         <!-- <p class="mb-0 text-white" style="white-space: nowrap;">Filter post by :</p> -->
 
         <div class="d-flex align-items-center gap-3 ct_flex_575 mt-3">
             <div class="ct_filter_search_input_140 d-flex align-items-center gap-3">
                 <span class="text-white ct_text_op_5" style="white-space: nowrap;">Filtered By Category:</span>
-                <select class="form-control ct_custom_input" [(ngModel)]="categoryId" (change)="onCategoryChange($event)" style="cursor: pointer;">
+                <select class="form-control ct_custom_input" [(ngModel)]="categoryId"
+                    (change)="onCategoryChange($event)" style="cursor: pointer;">
                     <option value="">All</option>
                     <option *ngFor="let category of categories" [value]="category.id">{{ category.name
                         }}</option>
@@ -31,8 +33,8 @@
             <p class="ct_fs_15 text-white mt-5">No coaches found</p>
         </div>
 
-        <div class="mt-4" *ngIf="data?.length > 0">
-            <ul class="ct_mt_30 ct_all_notification ct_my_interent_scroll px-2">
+        <!-- <div class="mt-4" *ngIf="data?.length > 0">
+            <ul class="ct_mt_30 ct_all_notification  px-2">
                 <li *ngFor="let categories of data;">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="ct_grid_auto_auto gap-2">
@@ -43,26 +45,100 @@
                                         alt="" class="ct_img_40 ct_bor ct_white_border_1">
                                 </div>
 
-                                <!-- <div>
-                                    <h5 class="ct_fs_15 ct_orange_text ct_fw_600 mb-1 ct_ff_roboto">
-                                        {{categories.full_name}}</h5>
-                                </div> -->
                                 <div>
                                     <h5 class="ct_fs_15 ct_orange_text ct_fw_600 mb-1 ct_ff_roboto">
                                         {{categories.full_name}}</h5>
                                 </div>
                             </div>
+                        </div>
+                        <div>
+                            <h5 class="ct_fs_15 ct_orange_text ct_fw_600 mb-1 ct_ff_roboto">
+                                {{categories.phone_no}}</h5>
+                        </div>
+                        <div>
+                            <h5 class="ct_fs_15 ct_orange_text ct_fw_600 mb-1 ct_ff_roboto">
+                                {{categories.email}}</h5>
+                        </div>
 
-                        </div>
-                        <div *ngIf="categories.numberOfFollower > 0">
-                            <p class="mb-0 ct_ff_roboto ct_fs_12 text-white text-center mt-2 ct_fw_400">
-                                {{categories.numberOfFollower}} {{categories.numberOfFollower > 1 ? 'Followers' :
-                                'Follower'}}
-                            </p>
-                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+
                     </div>
                 </li>
             </ul>
+        </div> -->
+        <div class="mt-4 table-responsive" *ngIf="data?.length > 0">
+            <table class="table">
+                <!-- Table Header -->
+                <thead>
+                    <tr>
+                        <th scope="col">S No.</th>
+                        <th scope="col">Avatar</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Change Subscription</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" class="text-end">Action</th>
+                    </tr>
+                </thead>
+
+                <!-- Table Body -->
+                <tbody>
+                    <tr
+                        *ngFor="let categories of data | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index;">
+                        <td>{{i+1}}</td>
+                        <td>
+                            <div class="ct_star_circle">
+                                <img [src]="categories.avatar_url ? categories.avatar_url : '/assets/img/np_pro.png'"
+                                    alt="Avatar" class="ct_img_40 ct_bor ct_white_border_1">
+                            </div>
+                        </td>
+                        <td>
+                            <h5 class="ct_fs_15  ct_fw_600 mb-1 ct_ff_roboto">
+                                {{categories.full_name}}
+                            </h5>
+                        </td>
+                        <td>
+                            <h5 class="ct_fs_15  ct_fw_600 mb-1 ct_ff_roboto">
+                                {{categories.phone_no}}
+                            </h5>
+                        </td>
+                        <td>
+                            <h5 class="ct_fs_15  ct_fw_600 mb-1 ct_ff_roboto">
+                                {{categories.email}}
+                            </h5>
+                        </td>
+
+                        <td>
+                            <div *ngIf="categories.activePlan.name == 'Free'">
+                                <button class="ct_orange_btn" (click)="onUpdateSubscription(categories)">
+                                    Free Access
+                                </button>
+                            </div>
+                            <h5 *ngIf="categories.activePlan.name != 'Free'">{{ categories.activePlan.name }}</h5>
+                        </td>
+
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox" [(ngModel)]="categories.status"
+                                    (click)="handleCheckboxChange(categories)">
+                                <span class="slider"></span>
+                            </label>
+                        </td>
+                        <td class="text-end" (click)="getCoachId(categories.id, categories.role)"
+                            style="cursor: pointer;">
+                            <i class="fa-regular fa-eye ct_green_text" aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
         </div>
+        <pagination-controls class="ct_pagination_div" *ngIf="!(data?.length == 0)"
+            (pageChange)="p = $event"></pagination-controls>
+
     </div>
 </div>

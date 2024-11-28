@@ -73,6 +73,17 @@
                 <p class="mb-0 ct_fs_12 ct_ff_roboto ct_fw_500 ct_orange_text" (click)="seeGroupMembesr()">Back</p>
                 }
 
+                <div class="dropdown ms-auto ct_chat_dropdown">
+                    <button class="btn ct_dropdown_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-ellipsis-vertical ct_orange_text"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        
+                        <li><a class="dropdown-item" (click)="deleteCommunity()">Delete</a></li>
+                    </ul>
+                </div>
+
                 <!-- <i *ngIf="isAdmin" class="fa-regular fa-pen-to-square text-white" aria-hidden="true"
                     data-bs-toggle="modal" data-bs-target="#ct_edit_community"></i> -->
 

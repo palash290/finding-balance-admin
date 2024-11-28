@@ -8,8 +8,8 @@
   }
 
   .ct_my_interent_scroll {
-    max-height: calc(100vh - 207px);
-    height: calc(100vh - 207px);
+    max-height: calc(100vh - 244px);
+    height: calc(100vh - 244px);
 }
 
 .ct_grid_auto_auto{
@@ -23,3 +23,4 @@ div#ct_edit_community .modal-content {
     border: 1px solid var(--orange);
     padding: 22px;
 }
+
