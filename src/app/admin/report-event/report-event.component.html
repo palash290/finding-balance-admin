@@ -146,8 +146,13 @@
                     </div>
                 </div>
 
-                <div>
-                    <button class="ct_orange_btn ct_red_btn w-100">Delete this event</button>
+                <div class="d-flex">
+                    <button (click)="deleteEvent(eventData.id)" class="ct_orange_btn ct_red_btn w-50"
+                        data-bs-dismiss="modal">Delete this event</button>
+                    <button class="ct_orange_btn ct_red_btn w-50" (click)="viewEvent(eventData?.id)">View
+                        Event</button>
+                    <button hidden type="button" class="btn btn-secondary" #closeModalDel
+                        data-bs-dismiss="modal">Close</button>
                 </div>
 
             </div>

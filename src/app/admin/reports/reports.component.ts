@@ -4,6 +4,7 @@ import { SharedService } from '../../services/shared.service';
 import { Router } from '@angular/router';
 import { WaveService } from 'angular-wavesurfer-service';
 import WaveSurfer from 'wavesurfer.js';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reports',
@@ -63,8 +64,8 @@ export class ReportsComponent {
 
   ngOnInit() {
 
-    const savedTab = localStorage.getItem('activeTab');
-    this.activeTab = savedTab ? savedTab : 'post';
+    // const savedTab = localStorage.getItem('activeTab');
+    // this.activeTab = savedTab ? savedTab : 'post';
 
     document.addEventListener("fullscreenchange", () => {
       this.isFullScreen = !!document.fullscreenElement; // Update the state based on fullscreen status
@@ -281,6 +282,47 @@ export class ReportsComponent {
 
   getUserId(uderId: any, role: any) {
     this.router.navigateByUrl(`admin/main/my-profile/${uderId}/${role}`)
+  }
+
+  deletePost(id: any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this post!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.postAPI(`deletePost/${id}`, null).subscribe({
+          next: (resp) => {
+            if (resp.success) {
+              Swal.fire(
+                'Deleted!',
+                'Your post has been deleted successfully.',
+                'success'
+              );
+              this.getReports();
+      
+            } else {
+              this.getReports();
+      
+            }
+          },
+          error: (error) => {
+            Swal.fire(
+              'Error!',
+              'There was an error deleting your post.',
+              'error'
+            );
+            this.getReports();
+            //this.toastr.error('Error deleting account!');
+            console.error('Error deleting account', error);
+          }
+        });
+      }
+    });
   }
 
 

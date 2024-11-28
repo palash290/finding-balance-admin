@@ -74,6 +74,7 @@
     </table>
     <!-- <pagination-controls class="ct_pagination_div" *ngIf="!(data?.length == 0)"
         (pageChange)="p = $event"></pagination-controls> -->
+     
 </div>
 
 
@@ -115,8 +116,11 @@
                     </div>
                 </div>
 
-                <div>
-                    <button class="ct_orange_btn ct_red_btn w-100">Delete this community</button>
+                <div class="d-flex">
+                    <button (click)="deleteCommunity(communityDetails?.id)" class="ct_orange_btn ct_red_btn w-50" data-bs-dismiss="modal">Delete this community</button>
+                    <button class="ct_orange_btn ct_red_btn w-50" (click)="viewCommunity(communityDetails?.id)">View community</button>
+                    <button hidden type="button" class="btn btn-secondary" #closeModalDel
+                        data-bs-dismiss="modal">Close</button>
                 </div>
 
             </div>

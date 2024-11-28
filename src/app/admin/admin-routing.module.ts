@@ -17,6 +17,8 @@ import { SingleEventComponent } from './single-event/single-event.component';
 import { PlanComponent } from './plan/plan.component';
 import { ReportsComponent } from './reports/reports.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { SubCoachComponent } from './plan/sub-coach/sub-coach.component';
+import { SubUserComponent } from './plan/sub-user/sub-user.component';
 
 const routes: Routes = [
   {
@@ -48,6 +50,10 @@ const routes: Routes = [
       },
       {
         path: "communities",
+        component: CommunitiesComponent,
+      },
+      {
+        path: "communities/:coachId",
         component: CommunitiesComponent,
       },
       {
@@ -87,8 +93,12 @@ const routes: Routes = [
         component: ReportsComponent,
       },
       {
-        path: "manage-home",
-        component: LandingPageComponent,
+        path: "subscription-coach",
+        component: SubCoachComponent,
+      },
+      {
+        path: "subscription-user",
+        component: SubUserComponent,
       },
     ],
   },

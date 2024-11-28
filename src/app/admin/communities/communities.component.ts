@@ -1,5 +1,5 @@
 import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup } from '@angular/forms';
@@ -31,7 +31,7 @@ export class CommunitiesComponent {
   highlightedBars: number = 0; // Number of highlighted bars
   isPlayingA: boolean[] = [];
 
-  constructor(private route: Router, private service: SharedService, public waveService: WaveService) { }
+  constructor(private route: Router, private service: SharedService, public waveService: WaveService, private router: ActivatedRoute) { }
 
   toSee: boolean = true
   seeGroupMembesr() {
@@ -41,6 +41,13 @@ export class CommunitiesComponent {
   userId: any;
 
   ngOnInit(): void {
+
+    this.router.paramMap.subscribe(params => {
+      const coachId = params.get('coachId') || '';
+      //console.log(this.role);
+      this.getCommunityProfileData(coachId, true, true)
+    });
+
     //this.getCommunityPosts();
     this.getCommunityData();
   }

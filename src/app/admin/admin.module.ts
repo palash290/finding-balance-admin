@@ -26,6 +26,8 @@ import { ReportEventComponent } from './report-event/report-event.component';
 import { ReportCommunityComponent } from './report-community/report-community.component';
 import { ReportTeamComponent } from './report-team/report-team.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { SubCoachComponent } from './plan/sub-coach/sub-coach.component';
+import { SubUserComponent } from './plan/sub-user/sub-user.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     ReportEventComponent,
     ReportCommunityComponent,
     ReportTeamComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    SubCoachComponent,
+    SubUserComponent
   ],
   imports: [
     CommonModule,

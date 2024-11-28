@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-report-community',
@@ -54,6 +55,52 @@ export class ReportCommunityComponent {
 
   getUserId(uderId: any, role: any) {
     this.router.navigateByUrl(`admin/main/my-profile/${uderId}/${role}`)
+  }
+
+  @ViewChild('closeModalDel') closeModalDel!: ElementRef;
+
+  viewCommunity(id: any){
+    this.closeModalDel.nativeElement.click();
+    this.router.navigateByUrl(`admin/main/communities/${id}`)
+  }
+
+  deleteCommunity(communityId: any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this community!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.postAPI(`deleteCommunity/${communityId}`, null).subscribe({
+          next: (resp) => {
+            if (resp.success) {
+              Swal.fire(
+                'Deleted!',
+                'Your community has been deleted successfully.',
+                'success'
+              );
+              this.getReports();
+            
+            } else {
+              this.getReports();
+            }
+          },
+          error: (error) => {
+            Swal.fire(
+              'Error!',
+              'There was an error deleting your community.',
+              'error'
+            );
+            this.getReports();
+            console.error('Error deleting account', error);
+          }
+        });
+      }
+    });
   }
 
 
