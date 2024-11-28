@@ -74,7 +74,7 @@
     </table>
     <!-- <pagination-controls class="ct_pagination_div" *ngIf="!(data?.length == 0)"
         (pageChange)="p = $event"></pagination-controls> -->
-     
+
 </div>
 
 
@@ -85,7 +85,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header border-0 pt-0 px-0 d-block text-center">
-                <h5 class="modal-title text-white ct_fs_15 mx-auto ct_ff_roboto" id="exampleModalLabel">Reported
+                <h5 class="modal-title text-white ct_fs_24 mx-auto ct_ff_roboto" id="exampleModalLabel">Reported
                     Community
                 </h5>
                 <button type="button" class="btn-close ct_close" data-bs-dismiss="modal" aria-label="Close"><i
@@ -93,33 +93,36 @@
             </div>
             <div class="modal-body">
 
-                <h3 class="modal-title ct_fs_15 mx-auto ct_ff_roboto" style="color: #e58934;">Report Reason</h3>
-                <p class="modal-title text-white ct_fs_15 mx-auto ct_ff_roboto">{{reason}}</p>
+                <h3 class="modal-title ct_fs_18 mx-auto ct_ff_roboto" style="color: #e58934;">Report Reason</h3>
+                <p class="modal-title text-white ct_fs_15 mx-auto ct_ff_roboto ct_word_break">{{reason}}</p>
 
-                <div class="ct_my_profile_main mt-4">
-                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 ct_mt_30 pt-1">
+                <div class="ct_my_profile_main mt-0 mx-0">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2  pt-1">
                         <div>
-                            <div class="ct_cover_img mt-3">
+                            <div class="ct_cover_img my-3">
                                 <img [src]="communityDetails?.mediaUrl ? communityDetails?.mediaUrl : '/assets/img/no_event.png'"
                                     alt="" class="ct_img_h_200  ct_object_cover_mob">
                             </div>
 
                             <h4 class="ct_ff_roboto text-white ct_fs_18 ct_fw_600">Community Name</h4>
-                            <h4 class="ct_ff_roboto ct_fw_600 text-white ct_fs_24 mb-0">{{communityDetails?.title}}</h4>
+                            <p class="ct_ff_roboto ct_fs_15  text-white  mb-0">{{communityDetails?.title}}</p>
 
 
                             <h4 class="ct_ff_roboto text-white ct_fs_18 ct_fw_600 mt-4">Community Decsription</h4>
-                            <h4 class="ct_ff_roboto ct_fw_600 text-white ct_fs_24 mb-0">
-                                {{communityDetails?.description}}</h4>
+                            <p class="ct_ff_roboto ct_fs_15  text-white  mb-0">
+                                {{communityDetails?.description}}</p>
 
                         </div>
                     </div>
                 </div>
 
-                <div class="d-flex">
-                    <button (click)="deleteCommunity(communityDetails?.id)" class="ct_orange_btn ct_red_btn w-50" data-bs-dismiss="modal">Delete this community</button>
-                    <button class="ct_orange_btn ct_red_btn w-50" (click)="viewCommunity(communityDetails?.id)">View community</button>
-                    <button hidden type="button" class="btn btn-secondary" #closeModalDel
+                <div class="d-flex align-items-center gap-2 justify-content-center mt-4">
+                    <button (click)="deleteCommunity(communityDetails?.id)" class="ct_orange_btn ct_red_btn"
+                        data-bs-dismiss="modal">Delete this community</button>
+                    <button class="ct_orange_btn ct_border_radius_10 "
+                        (click)="viewCommunity(communityDetails?.id)">View
+                        community</button>
+                    <button hidden type="button" class="btn btn-secondary ct_border_radius_10" #closeModalDel
                         data-bs-dismiss="modal">Close</button>
                 </div>
 

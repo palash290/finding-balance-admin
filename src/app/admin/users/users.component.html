@@ -84,14 +84,15 @@
                                     {{categories.email}}
                                 </h5>
                             </td>
-                          
+
                             <td>
                                 <div *ngIf="categories.activePlan.name == 'Free'">
-                                    <button class="ct_orange_btn" (click)="onUpdateSubscription(categories)">
+                                    <button class="ct_orange_btn py-2" (click)="onUpdateSubscription(categories)">
                                         Free Access
                                     </button>
                                 </div>
-                                <h5 *ngIf="categories.activePlan.name != 'Free'">{{ categories.activePlan.name }}</h5>
+                                <h5 *ngIf="categories.activePlan.name != 'Free'" class="ct_fs_15">{{
+                                    categories.activePlan.name }}</h5>
                             </td>
 
                             <td>
@@ -103,6 +104,7 @@
                             </td>
                             <td class="text-end" (click)="getUserId(categories.id, categories.role)"
                                 style="cursor: pointer;">
+
                                 <i class="fa-regular fa-eye ct_green_text" aria-hidden="true"></i>
                             </td>
                         </tr>

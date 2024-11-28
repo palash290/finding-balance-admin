@@ -69,7 +69,7 @@
                 </li>
             </ul>
         </div> -->
-        <div class="mt-4 table-responsive" *ngIf="data?.length > 0">
+        <div class="my-4 table-responsive" *ngIf="data?.length > 0">
             <table class="table">
                 <!-- Table Header -->
                 <thead>
@@ -114,11 +114,12 @@
 
                         <td>
                             <div *ngIf="categories.activePlan.name == 'Free'">
-                                <button class="ct_orange_btn" (click)="onUpdateSubscription(categories)">
+                                <button class="ct_orange_btn py-2 ct_fs_15" (click)="onUpdateSubscription(categories)">
                                     Free Access
                                 </button>
                             </div>
-                            <h5 *ngIf="categories.activePlan.name != 'Free'">{{ categories.activePlan.name }}</h5>
+                            <h5 *ngIf="categories.activePlan.name != 'Free'" class="ct_fs_15">{{
+                                categories.activePlan.name }}</h5>
                         </td>
 
                         <td>
@@ -137,7 +138,7 @@
 
             </table>
         </div>
-        <pagination-controls class="ct_pagination_div" *ngIf="!(data?.length == 0)"
+        <pagination-controls class="ct_pagination_div " *ngIf="!(data?.length == 0)"
             (pageChange)="p = $event"></pagination-controls>
 
     </div>

@@ -1,24 +1,26 @@
 .table {
+  --bs-table-bg: #1e1e1e;
+}
 
-    --bs-table-bg: #1E1E1E;
-   
-  }
-  
-  .table>:not(caption)>*>* {
-  
-    color: var(--bs-table-color-state, var(--bs-table-color-type, #ffefef));
-   
-  }
-  
-  tbody, td, tfoot, th, thead, tr {
-    border-color: inherit;
-    border-width: 0;
-  }
-  
+.table > :not(caption) > * > * {
+  color: var(--bs-table-color-state, var(--bs-table-color-type, #ffefef));
+}
 
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: inherit;
+  border-width: 0;
+}
 
-  div#ct_edit_community1 .modal-content {
-    background-color: #111010;
-    border: 1px solid var(--orange);
-    padding: 22px;
+div#ct_edit_community1 .modal-content {
+  background-color: #111010;
+  border: 1px solid var(--orange);
+  padding: 22px;
+}
+.ct_border_radius_10 {
+  border-radius: 10px;
 }

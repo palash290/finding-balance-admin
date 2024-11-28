@@ -27,7 +27,7 @@
                     <th scope="col">S No.</th>
                     <th scope="col">Avatar</th>
                     <th scope="col">Name</th>
-                    <th scope="col" class="text-end">View</th>
+                    <!-- <th scope="col" class="text-end">View</th> -->
                     <th scope="col" class="text-end">Action</th>
                 </tr>
             </thead>
@@ -47,13 +47,17 @@
                             {{event.name}}
                         </h5>
                     </td>
-                    <td style="cursor: pointer;" class="text-end">
+                    <!-- <td style="cursor: pointer;" class="text-end">
                         <button class="ct_orange_btn ms-auto" (click)="getEventId(event.id)">See Details</button>
-                    </td>
+                    </td> -->
 
                     <td style="cursor: pointer;" class="text-end">
-                        <button class="ct_orange_btn_trash ms-auto" (click)="deleteEvent(event.id)"><i
-                                class="fa fa-trash" aria-hidden="true"></i></button>
+                        <div class="d-flex align-item-center  justify-content-end">
+                            <button class="ct_orange_btn_trash "> <i class="fa-regular fa-eye"
+                                    (click)="getEventId(event.id)"></i></button>
+                            <button class="ct_orange_btn_trash text-danger " (click)="deleteEvent(event.id)"><i
+                                    class="fa fa-trash" aria-hidden="true"></i></button>
+                        </div>
                     </td>
                 </tr>
             </tbody>

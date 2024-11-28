@@ -12,29 +12,22 @@
   height: calc(100vh - 207px);
 }
 
-.ct_dash_inner_scroll {
+/* .ct_dash_inner_scroll {
   height: calc(100vh - 171px);
   overflow-y: auto;
-}
+} */
 
 .ct_grid_auto_auto {
   display: grid;
   grid-template-columns: auto auto;
 }
 
-
-
-
 .table {
-
-  --bs-table-bg: #1E1E1E;
-
+  --bs-table-bg: #1e1e1e;
 }
 
-.table>:not(caption)>*>* {
-
+.table > :not(caption) > * > * {
   color: var(--bs-table-color-state, var(--bs-table-color-type, #ffefef));
-
 }
 
 tbody,
