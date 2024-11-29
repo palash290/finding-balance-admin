@@ -87,6 +87,7 @@ export class CategoriesComponent {
           this.closeModal.nativeElement.click();
           this.searchCategories();
           this.service.triggerRefresh();
+          this.name = ''
         } else {
           this.toastr.warning(resp.message);
         }
@@ -116,7 +117,14 @@ export class CategoriesComponent {
   @ViewChild('closeModal1') closeModal1!: ElementRef;
 
   editName() {
-    if (!this.updateName || this.updateName.trim() === '') {
+    // if (!this.updateName || this.updateName.trim() === '') {
+    //   this.nameError1 = true;
+    //   return;
+    // } else {
+    //   this.nameError1 = false; // Reset the error state
+    // }
+
+    if (!this.updateName || this.updateName.trim().length === 0) {
       this.nameError1 = true;
       return;
     } else {

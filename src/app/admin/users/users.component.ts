@@ -31,7 +31,7 @@ export class UsersComponent {
         text: "You want to active this user!",
         icon: "success",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#e58934",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes!",
         cancelButtonText: "No"
@@ -54,7 +54,7 @@ export class UsersComponent {
         text: "You want to deactive this user!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#e58934",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes!",
         cancelButtonText: "No"
@@ -169,13 +169,13 @@ export class UsersComponent {
       text: 'You want to give this user a premium subscription for a month!',
       icon: 'question',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#e58934',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.isConfirmed) {
         const formURlData = new URLSearchParams();
-        formURlData.set('coachId', user.id);
+        formURlData.set('userId', user.id);
         formURlData.set('planId', '2');
         this.service.postAPI(`Gift-subscription`, formURlData.toString()).subscribe({
           next: (resp) => {

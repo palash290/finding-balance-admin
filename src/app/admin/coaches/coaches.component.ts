@@ -30,7 +30,7 @@ export class CoachesComponent {
         text: "You want to active this user!",
         icon: "success",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#e58934",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes!",
         cancelButtonText: "No"
@@ -53,7 +53,7 @@ export class CoachesComponent {
         text: "You want to deactive this user!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#e58934",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes!",
         cancelButtonText: "No"
@@ -163,7 +163,7 @@ export class CoachesComponent {
       text: 'You want to give this coach a premium subscription for a month!',
       icon: 'question',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#e58934',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes'
     }).then((result) => {

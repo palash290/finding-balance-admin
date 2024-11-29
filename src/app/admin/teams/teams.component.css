@@ -185,5 +185,8 @@ div#ct_view_community .modal-content {
   }
   
   
-  
+  .form-control:disabled {
+    background-color: #050506;
+    opacity: 1;
+}
   

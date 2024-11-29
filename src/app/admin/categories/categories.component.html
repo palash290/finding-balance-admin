@@ -83,7 +83,7 @@
             <div class="modal-body">
                 <form>
                     <div>
-                        <input type="text" class="form-control ct_login_input" placeholder="Enter Name"
+                        <input type="text" class="form-control ct_login_input" placeholder="Catagory Name"
                             [(ngModel)]="name" [ngModelOptions]="{ standalone: true }" required />
                         <div *ngIf="nameError" class="error-message">Category name is required.</div>
                     </div>
@@ -114,14 +114,14 @@
         <div class="modal-content">
             <div class="modal-header border-0 pt-0 px-0 d-block text-center">
                 <h5 class="modal-title text-white ct_fs_15 mx-auto ct_ff_roboto" id="exampleModalLabel">Update
-                    Catagory Name</h5>
+                    Catagory</h5>
                 <button type="button" class="btn-close ct_close" data-bs-dismiss="modal" aria-label="Close"><i
                         class="fa-solid fa-x"></i></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div>
-                        <input type="text" class="form-control ct_login_input" placeholder="Enter Name"
+                        <input type="text" class="form-control ct_login_input" placeholder="Catagory Name"
                             [(ngModel)]="updateName" [ngModelOptions]="{ standalone: true }" required />
                         <div *ngIf="nameError1" class="error-message">Category name is required.</div>
                     </div>

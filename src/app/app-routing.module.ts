@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './core/login/login.component';
 import { ForgotPassordComponent } from './core/forgot-passord/forgot-passord.component';
 import { HomeComponent } from './core/home/home.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
   //   component: HomeComponent
   // },
   {
-    path: 'admin',
+    path: 'admin', canActivate: [AuthGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   { path: '**', redirectTo: '/login' }

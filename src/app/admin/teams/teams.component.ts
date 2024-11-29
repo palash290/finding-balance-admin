@@ -382,7 +382,7 @@ export class TeamsComponent {
       text: 'You will not be able to recover this team!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#e58934',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
@@ -413,6 +413,17 @@ export class TeamsComponent {
         });
       }
     });
+  }
+
+  communityName1: any;
+  communityDesc1: any;
+  eventImage1: any;
+
+  viewCommunity(data: any){
+    this.eventImage = data.mediaUrl;
+    this.communityName1 = data.title;
+    this.communityDesc1 = data.description;
+    console.log('gfhg======>', data);
   }
   
 

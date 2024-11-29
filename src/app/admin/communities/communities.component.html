@@ -16,8 +16,7 @@
             </div>
             <!-- add This Class active when chat open  -->
             <li class="mt-3" *ngFor="let data of communityData | filter:searchQueryFilter"
-                [class.active]="data.id === selectedCommunityId" data-bs-toggle="modal"
-                data-bs-target="#ct_view_community">
+                [class.active]="data.id === selectedCommunityId" >
 
                 <div class="d-flex align-items-center gap-2">
                     <div class="d-flex align-items-center"
@@ -36,6 +35,9 @@
                         </div>
 
                     </div>
+                    <button (click)="viewCommunity(data)"
+                        class="ct_orange_btn ct_grey_btn ct_border_radius_10 px-4 mx-auto py-2 h-auto ct_fs_13 ct_active_follow"
+                        data-bs-toggle="modal" data-bs-target="#ct_view_community">View</button>
                 </div>
             </li>
 
@@ -398,3 +400,62 @@
 <!-- <div *ngIf="loading" class="ct_loader_main">
     <div class="loader"></div>
 </div> -->
+
+
+
+<!-- View -->
+
+<div class="modal fade" id="ct_view_community" tabindex="-1" aria-labelledby="ct_view_community" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pt-0 px-0 d-block text-center">
+                <h5 class="modal-title text-white ct_fs_20 ct_fs_20_res mx-auto ct_ff_roboto" id="exampleModalLabel">
+                    View
+                    Community Details</h5>
+                <button type="button" class="btn-close ct_close" data-bs-dismiss="modal" aria-label="Close"><i
+                        class="fa-solid fa-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div>
+                        <input type="text" class="form-control ct_login_input" placeholder="Community Name"
+                            [value]="communityName1" disabled>
+                    </div>
+
+                    <div class="mt-3">
+                        <textarea type="text" class="form-control ct_login_input h-auto" placeholder="No Community Description"
+                            [value]="communityDesc1" disabled rows="3"></textarea>
+                    </div>
+
+                    <div class="ct_uploaded_cnt">
+                        <div id="ct_video" class="ct_audio_upload_first d-block" style="max-width: 100%;">
+
+                            <img class="ct_img_h_200" [src]="eventImage ? eventImage : '/assets/img/np_pro.png'"
+                                alt="Uploaded Image" />
+
+                        </div>
+                    </div>
+
+                    <!-- <button type="button" (click)="joinCommunity()"
+                        class="ct_orange_btn ct_grey_btn ct_border_radius_10 px-4 mx-auto py-2 h-auto ct_fs_13 ct_active_follow mt-4"
+                        [disabled]="btnLoader">
+                        <div class="d-flex align-items-center">
+                            <div class="spinner-border me-2" role="status" *ngIf="btnLoader == followId1">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <span *ngIf="!btnLoader"> Join</span>
+                        </div>
+                    </button> -->
+
+                    <button hidden type="button" class="btn btn-secondary" #closeModal2
+                        data-bs-dismiss="modal">Close</button>
+                    <!-- <button class="ct_orange_btn ct_grey_btn ct_border_radius_10 w-100 mt-4" data-bs-dismiss="modal">
+                        Close
+                    </button> -->
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

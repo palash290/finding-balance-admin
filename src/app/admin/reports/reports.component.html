@@ -63,8 +63,8 @@
                                     <th scope="col"></th>
                                     <th scope="col">Reported By</th>
                                     <th scope="col">Reported Date</th>
-                                    <!-- <th scope="col">Email</th> -->
-                                    <th scope="col">View</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
 
@@ -112,6 +112,11 @@
                                             {{categories.reporter.user?.createdAt | date:'dd-MMM-yyyy'}}
                                         </h5>
                                     </td>
+                                    <td>
+                                        <h5 class="ct_fs_15  ct_fw_600 mb-1 ct_ff_roboto">
+                                            {{categories.reportedEntity.post?.type}}
+                                        </h5>
+                                    </td>
                                     <!-- <td>
                                         <h5 class="ct_fs_15  ct_fw_600 mb-1 ct_ff_roboto">
                                             {{categories.reporter.user.email}}
@@ -129,7 +134,7 @@
                                     <td colspan="7">
                                         <div *ngIf="(!data || (data | filter2: searchQuery)?.length == 0)"
                                             class="no-item-found text-white text-center py-5">
-                                            No relult found
+                                            No result found
                                         </div>
                                     </td>
                                 </tr>
